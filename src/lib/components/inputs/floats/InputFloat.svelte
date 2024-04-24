@@ -40,11 +40,11 @@
 		placeholder=" "
 		{required}
 		{pattern}
-		class={`input-fill ${getRoundedStyle(ROUNDED_STYLE, rounded)?.class ?? 'rounded-none'} ${className} peer`}
+		class={`input-fill ${getRoundedStyle(ROUNDED_STYLE, rounded).class} ${className} peer`}
 	/>
 	<label
 		for={nameInput}
-		class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize)?.class ?? 'text-base'} ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize)?.class ?? 'text-base'}`}
+		class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize)?.class ?? 'text-base'}`}
 		>{labelText}</label
 	>
 </div>

@@ -20,8 +20,9 @@
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
 
-	const onInput: (e: Event & { currentTarget: EventTarget & HTMLInputElement }) => void = (event) =>
+	function onInput(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
 		dispatch('input', event);
+	}
 	function typeAction(node: any) {
 		node.type = type;
 	}
@@ -29,12 +30,11 @@
 
 <label
 	for={nameInput}
-	class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize)?.class ?? 'text-base'}`}
+	class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class}`}
 	>{labelText}</label
 >
 <input
-	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize)?.class ?? 'text-base'} ${getRoundedStyle(ROUNDED_STYLE, rounded)?.class ?? 'rounded-none'} ${className}`}
-	type="number"
+	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getRoundedStyle(ROUNDED_STYLE, rounded)?.class ?? 'rounded-none'} ${className}`}
 	name={nameInput}
 	id={nameInput}
 	use:typeAction
