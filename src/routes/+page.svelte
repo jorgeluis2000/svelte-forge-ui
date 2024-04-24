@@ -4,6 +4,7 @@
 	import InputSelectFloat from '$lib/components/inputs/floats/InputSelectFloat.svelte';
 	import InputUnitSelectFloat from '$lib/components/inputs/floats/InputUnitSelectFloat.svelte';
 	import type { ItemSelect } from '$lib/domains/types/Select.type';
+	import InputNatural from '$lib/components/inputs/simples/InputNatural.svelte';
 	let inputFloat = '';
 	let inputBasic = '';
 	let inputSelectFloat: ItemSelect[] = [];
@@ -31,6 +32,18 @@
 			nameInput="input-basic"
 			labelText="Input Basic"
 			placeholder="Input Basic"
+			rounded="none"
+			textSize="sm"
+			bind:valueInput={inputBasic}
+		/>
+	</div>
+	<div>
+		<InputNatural
+			type="text"
+			className=""
+			nameInput="input-natural"
+			placeholder="Input Natural"
+			rounded="none"
 			textSize="sm"
 			bind:valueInput={inputBasic}
 		/>
@@ -53,7 +66,12 @@
 			labelText="Input Select Float"
 			listItemsShow={listItemsToShowSelect}
 			defaultText=" - "
-			textManySelected="Seleccionadas"
+			textManySelected="Selects"
+			placeholderSearch="Search"
+			rounded="none"
+			roundedTags="full"
+			textSize="base"
+			textSizeTags="base"
 			bind:valueInput={inputSelectFloat}
 		/>
 	</div>
@@ -61,10 +79,15 @@
 	<div>
 		<InputUnitSelectFloat
 			className=""
-			nameInput="input-select-float"
-			labelText="Input Select Float"
+			nameInput="input-select-unit-float"
+			labelText="Input Unit Select Float"
 			listItemsShow={listItemsToShowSelect}
 			defaultText=" - "
+			placeholderSearch="Search"
+			rounded="none"
+			roundedTags="full"
+			textSize="base"
+			textSizeTags="base"
 			bind:valueInput={inputUnitSelectFloat}
 		/>
 	</div>
