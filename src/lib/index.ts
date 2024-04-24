@@ -1,4 +1,4 @@
-import InputNumber from './inputs/simples/InputNumber.svelte';
-import InputNumberFloat from './inputs/floats/InputNumberFloat.svelte';
+import InputBasic from './inputs/simples/InputBasic.svelte';
+import InputFloat from './inputs/floats/InputFloat.svelte';
 
-export { InputNumber, InputNumberFloat };
+export { InputBasic, InputFloat };

@@ -1,34 +1,35 @@
 <script lang="ts">
-	import InputNumberFloat from '$lib/inputs/floats/InputNumberFloat.svelte';
-	import InputNumber from '$lib/inputs/simples/InputNumber.svelte';
-	let inputNumberValue = '';
-	let inputNumberFloatValue = '';
+	import InputFloat from '$lib/inputs/floats/InputFloat.svelte';
+	import InputBasic from '$lib/inputs/simples/InputBasic.svelte';
+	let inputFloat = '';
+	let inputBasic = '';
 </script>
 
 <section class="m-5 space-y-10">
 	<div class="flex w-full" id="inputs">
-		<h1 class="text-2xl font-bold">Inputs Section</h1>
+		<h1 class="text-2xl font-bold">Components</h1>
 	</div>
+
 	<div class="flex w-full" id="inputs">
 		<h2 class="text-xl font-semibold">Inputs Section</h2>
 	</div>
 	<div>
-		<InputNumber
+		<InputBasic
+			type="text"
 			className=""
-			labelText="Input Number"
-			nameInput="input-number"
-			placeholder="placeholder"
-			bind:inputValue={inputNumberValue}
+			nameInput="input-f-float"
+			labelText="Input Basic"
+			placeholder="Input Basic"
+			bind:valueInput={inputBasic}
 		/>
 	</div>
-
 	<div>
-		<InputNumberFloat
+		<InputFloat
+			type="text"
 			className=""
-			nameInput="input-number-float"
-			labelText="Input Number Float"
-			bind:valueInput={inputNumberFloatValue}
-			maxlength={2}
+			nameInput="input-float"
+			labelText="Input Float"
+			bind:valueInput={inputFloat}
 		/>
 	</div>
 </section>
