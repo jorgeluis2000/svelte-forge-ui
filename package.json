@@ -42,12 +42,17 @@
 			"svelte": "./dist/index.js"
 		}
 	},
+	"homepage": "https://github.com/jorgeluis2000/svelte-forge-ui",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jorgeluis2000/svelte-forge-ui"
+	},
 	"peerDependencies": {
 		"svelte": "^4.0.0"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-auto": "^3.2.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.3.1",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
