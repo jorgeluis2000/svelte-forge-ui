@@ -1,0 +1,1 @@
+export type RoundedSize = "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full" | "none"
