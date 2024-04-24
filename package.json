@@ -1,7 +1,7 @@
 {
 	"name": "svelte-forge-ui",
 	"description": "It's a component library for Svelte. These component designs are lightweight and flexible.",
-	"version": "0.0.1",
+	"version": "0.0.1-alpha",
 	"private": true,
 	"keywords": [
 		"svelte",
@@ -12,7 +12,8 @@
 		"submits",
 		"toasts",
 		"dialogs",
-		"modals"
+		"modals",
+		"select"
 	],
 	"author": "Jorge Luis Güiza Granobles <jorgeluis.gg.2000@gmail.com>",
 	"license": "MIT",
