@@ -15,7 +15,11 @@
 		"modals",
 		"select"
 	],
-	"author": "Jorge Luis Güiza Granobles <jorgeluis.gg.2000@gmail.com>",
+	"author": {
+		"name": "Jorge Luis Güiza Granobles",
+		"email": "jorgeluis.gg.2000@gmail.com",
+		"url": "https://github.com/jorgeluis2000"
+	},
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
