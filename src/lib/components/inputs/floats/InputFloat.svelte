@@ -18,6 +18,8 @@
 	export let required: boolean | null | undefined = false;
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
+	const ownTextSize = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class;
+	const ownRounded = getRoundedStyle(ROUNDED_STYLE, rounded).class;
 	function typeAction(node: any) {
 		node.type = type;
 	}
@@ -43,13 +45,9 @@
 		placeholder=" "
 		{required}
 		{pattern}
-		class={`input-fill ${getRoundedStyle(ROUNDED_STYLE, rounded).class} ${className} peer`}
+		class={`input-fill ${ownRounded} ${className} peer`}
 	/>
-	<label
-		for={nameInput}
-		class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize)?.class ?? 'text-base'}`}
-		>{labelText}</label
-	>
+	<label for={nameInput} class={`label-fill ${ownTextSize} ${ownTextSize}`}>{labelText}</label>
 </div>
 
 <style lang="postcss">

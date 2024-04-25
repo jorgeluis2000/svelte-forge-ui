@@ -24,7 +24,6 @@
 
 	const ownRounded: string = getRoundedStyle(ROUNDED_STYLE, rounded).class;
 	const ownTextSize: string = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class;
-	const ownTextSizeTags: string = getTextSizeStyle(TEXT_SIZE_STYLE, textSizeTags).class;
 
 	let searchItems: string = '';
 	let focusShow = false;
@@ -38,7 +37,9 @@
 		if (searchItems === null) {
 			searchItems = '';
 		}
-		listSearch = listItemsShow.filter(({ text }) => text.toLowerCase().includes(searchItems.toLowerCase()));
+		listSearch = listItemsShow.filter(({ text }) =>
+			text.toLowerCase().includes(searchItems.toLowerCase())
+		);
 	}
 </script>
 

@@ -25,7 +25,7 @@
 </script>
 
 <input
-	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getRoundedStyle(ROUNDED_STYLE, rounded)?.class ?? 'rounded-none'} ${className}`}
+	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getRoundedStyle(ROUNDED_STYLE, rounded).class} ${className}`}
 	name={nameInput}
 	id={nameInput}
 	use:typeAction

@@ -19,16 +19,18 @@
 	export let required: boolean | null | undefined = false;
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
+	const ownTextSize = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class
+	const ownRoundedStyle = getRoundedStyle(ROUNDED_STYLE, rounded).class
 	function typeAction(node: any) {
 		node.type = type;
 	}
 </script>
 
-<label for={nameInput} class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class}`}
+<label for={nameInput} class={`label-fill ${ownTextSize}`}
 	>{labelText}</label
 >
 <input
-	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getRoundedStyle(ROUNDED_STYLE, rounded)?.class ?? 'rounded-none'} ${className}`}
+	class={`input-fill ${ownTextSize} ${ownRoundedStyle} ${className}`}
 	name={nameInput}
 	id={nameInput}
 	use:typeAction
