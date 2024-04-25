@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { IntoCompany } from '../../domains/types/SEO.type';
 
 	export let title: string;
@@ -13,7 +14,12 @@
 	export let language: string;
 	export let type: string = 'website';
 	export let icon = '/company/favicon.svg';
-	const url = document.URL;
+	let url = "";
+	let hostname = "";
+	onMount(() => {
+		url = window.location.href;
+		hostname = window.location.hostname
+	});
 </script>
 
 <!-- Important SEO -->
@@ -44,7 +50,7 @@
 <meta property="og:image" content={image} />
 <!-- Twitter SEO -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:domain" content={window.location.hostname} />
+<meta name="twitter:domain" content={hostname} />
 <meta name="twitter:url" content={url} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
