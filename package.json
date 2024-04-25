@@ -1,8 +1,8 @@
 {
 	"name": "svelte-forge-ui",
 	"description": "It's a component library for Svelte. These component designs are lightweight and flexible.",
-	"version": "0.0.1-alpha",
-	"private": true,
+	"version": "0.0.1-alpha.1",
+	"private": false,
 	"keywords": [
 		"svelte",
 		"UI",
@@ -42,6 +42,10 @@
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
+		"./package.json": "./package.json",
+		"./README.md": "./README.md",
+		"./icons/index.d.ts": "./dist/icons/index.d.ts",
+		"./icons/index.js": "./dist/icons/index.js",
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
