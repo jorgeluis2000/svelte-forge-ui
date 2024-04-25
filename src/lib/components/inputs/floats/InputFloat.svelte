@@ -18,11 +18,6 @@
 	export let required: boolean | null | undefined = false;
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
-
-	const onInput: (event: Event & { currentTarget: EventTarget & HTMLInputElement }) => void = (
-		event
-	) => dispatch('input', event);
-
 	function typeAction(node: any) {
 		node.type = type;
 	}
@@ -31,7 +26,15 @@
 <div class="content-input">
 	<input
 		bind:value={valueInput}
-		on:input|preventDefault={onInput}
+		on:input={(event) => dispatch('input', event)}
+		on:blur={(event) => dispatch('blur', event)}
+		on:change={(event) => dispatch('change', event)}
+		on:focus={(event) => dispatch('focus', event)}
+		on:focusin={(event) => dispatch('focusin', event)}
+		on:focusout={(event) => dispatch('focusout', event)}
+		on:keypress={(event) => dispatch('keypress', event)}
+		on:keydown={(event) => dispatch('keydown', event)}
+		on:keyup={(event) => dispatch('keyup', event)}
 		use:typeAction
 		{autocomplete}
 		{maxlength}
