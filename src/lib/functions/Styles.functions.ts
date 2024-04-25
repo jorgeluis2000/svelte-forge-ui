@@ -1,4 +1,4 @@
-import type { RoundedSize, TextSize } from "./../domains/types/Sizes.type";
+import type { RoundedSize, TextSize } from './../domains/types/Sizes.type';
 
 /**
  * Retrieves the appropriate rounded style object based on the provided rounded size selection.
@@ -22,8 +22,16 @@ import type { RoundedSize, TextSize } from "./../domains/types/Sizes.type";
  * const noMatchStyle = getRoundedStyle(listStyleRounded, 'full');
  * console.log(noMatchStyle); // Output: { type: 'none', class: 'rounded-none' }
  */
-export function getRoundedStyle(listStyleRounded: { type: RoundedSize; class: string }[], roundedSelected: RoundedSize) {
-    return listStyleRounded.find((itemRounded) => itemRounded.type === roundedSelected) ?? { type: 'none', class: 'rounded-none' };
+export function getRoundedStyle(
+	listStyleRounded: { type: RoundedSize; class: string }[],
+	roundedSelected: RoundedSize
+) {
+	return (
+		listStyleRounded.find((itemRounded) => itemRounded.type === roundedSelected) ?? {
+			type: 'none',
+			class: 'rounded-none'
+		}
+	);
 }
 
 /**
@@ -49,6 +57,14 @@ export function getRoundedStyle(listStyleRounded: { type: RoundedSize; class: st
  * const noMatchStyle = getRoundedStyle(listStyleRounded, 'full');
  * console.log(noMatchStyle); // Output: { type: 'base', class: 'text-base' }
  */
-export function getTextSizeStyle(listStyleTextSize: { type: TextSize; class: string }[], textSizeSelected: TextSize) {
-    return listStyleTextSize.find((itemTextSize) => itemTextSize.type === textSizeSelected) ?? { type: 'base', class: 'text-base' };
+export function getTextSizeStyle(
+	listStyleTextSize: { type: TextSize; class: string }[],
+	textSizeSelected: TextSize
+) {
+	return (
+		listStyleTextSize.find((itemTextSize) => itemTextSize.type === textSizeSelected) ?? {
+			type: 'base',
+			class: 'text-base'
+		}
+	);
 }

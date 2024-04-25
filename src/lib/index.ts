@@ -15,4 +15,14 @@ import type { TextSize } from './domains/types/Sizes.type';
 import type { AutoCompleteInput } from './domains/types/AutoComplete.type';
 
 export type { ItemSelect, GroupItemSelect, RoundedSize, TextSize, AutoCompleteInput };
-export { SeoGenerate, InputBasic, InputFloat, InputSelectFloat, InputUnitSelectFloat, InputNatural, TextAreaSimple, TextAreaNatural, TextAreaFloat };
+export {
+	SeoGenerate,
+	InputBasic,
+	InputFloat,
+	InputSelectFloat,
+	InputUnitSelectFloat,
+	InputNatural,
+	TextAreaSimple,
+	TextAreaNatural,
+	TextAreaFloat
+};

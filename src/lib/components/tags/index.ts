@@ -1,3 +1,3 @@
-import TagSimple from "./TagSimple.svelte";
+import TagSimple from './TagSimple.svelte';
 
-export { TagSimple }
+export { TagSimple };

@@ -1,12 +1,12 @@
 export type ItemSelect = {
-    name: string
-    color?: string
-    value: string
-    text: string
-    group?: string
-}
+	name: string;
+	color?: string;
+	value: string;
+	text: string;
+	group?: string;
+};
 
 export type GroupItemSelect = {
-    id: string
-    name: string
-}
+	id: string;
+	name: string;
+};

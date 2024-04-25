@@ -14,11 +14,11 @@
 	export let language: string;
 	export let type: string = 'website';
 	export let icon = '/company/favicon.svg';
-	let url = "";
-	let hostname = "";
+	let url = '';
+	let hostname = '';
 	onMount(() => {
 		url = window.location.href;
-		hostname = window.location.hostname
+		hostname = window.location.hostname;
 	});
 </script>
 

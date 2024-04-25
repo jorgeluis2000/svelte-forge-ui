@@ -1,3 +1,3 @@
-import SeoGenerate from "./SEOGenerate.svelte";
+import SeoGenerate from './SEOGenerate.svelte';
 
-export { SeoGenerate }
+export { SeoGenerate };

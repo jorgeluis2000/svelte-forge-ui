@@ -1,4 +1,4 @@
-import TwoArrows from "./TwoArrows.svelte"
-import XMark from "./XMark.svelte"
+import TwoArrows from './TwoArrows.svelte';
+import XMark from './XMark.svelte';
 
-export { TwoArrows, XMark }
+export { TwoArrows, XMark };

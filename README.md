@@ -46,15 +46,18 @@ yarn add svelte-forge-ui
 We import the library into the `<script></script>` tags and create a variable that will take the data from **InputFloat**.
 
 <!-- markdownlint-disable -->
+
 ```typescript
-	import { InputFloat } from 'svelte-forge-ui';
-    let inputFloat = "";
+import { InputFloat } from 'svelte-forge-ui';
+let inputFloat = '';
 ```
+
 <!-- markdownlint-restore -->
 
-Now let's call the `<InputFloat/>` component and set the required properties ***nameInput***, ***labelText*** and ***valueInput***.
+Now let's call the `<InputFloat/>` component and set the required properties **_nameInput_**, **_labelText_** and **_valueInput_**.
 
 <!-- markdownlint-disable -->
+
 ```svelte
 <InputFloat
 	type="text"
@@ -65,6 +68,7 @@ Now let's call the `<InputFloat/>` component and set the required properties ***
 	bind:valueInput={inputFloat}
 />
 ```
+
 <!-- markdownlint-restore -->
 
 The other properties found are not mandatory but are properties that allow you to modify the style of the component.
