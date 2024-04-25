@@ -21,7 +21,7 @@
 	const dispatch = createEventDispatcher();
 	const ownTextSize = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class;
 	const ownRoundedStyle = getRoundedStyle(ROUNDED_STYLE, rounded).class;
-	function typeAction(node: any) {
+	function typeAction(node: HTMLInputElement) {
 		node.type = type;
 	}
 </script>

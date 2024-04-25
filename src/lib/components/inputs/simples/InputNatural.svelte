@@ -19,7 +19,7 @@
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
 
-	function typeAction(node: any) {
+	function typeAction(node: HTMLInputElement) {
 		node.type = type;
 	}
 </script>
