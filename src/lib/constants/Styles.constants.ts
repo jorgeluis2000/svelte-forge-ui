@@ -1,3 +1,5 @@
+import type { ThemeColor } from '../domains/types/ThemeColor.type';
+import type { TypeAlarm } from '../domains/types/TypeAlarm.type';
 import type { RoundedSize, TextSize } from './../domains/types/Sizes.type';
 
 export const ROUNDED_STYLE: { type: RoundedSize; class: string }[] = [
@@ -27,3 +29,34 @@ export const TEXT_SIZE_STYLE: { type: TextSize; class: string }[] = [
 	{ type: '8xl', class: 'text-8xl' },
 	{ type: '9xl', class: 'text-9xl' }
 ];
+
+
+export const COLOR_ALARM_STYLE: { type: TypeAlarm; class: string }[] = [
+	{ type: 'success', class: 'text-green-500 bg-green-100' },
+	{ type: 'error', class: 'text-red-500 bg-red-100' },
+	{ type: 'warning', class: 'text-amber-500 bg-amber-100' },
+	{ type: 'info', class: 'text-sky-500 bg-sky-100' },
+	{ type: 'loading', class: 'text-gray-500 bg-gray-100' },
+	{ type: 'time', class: 'text-orange-500 bg-orange-100' },
+	{ type: 'primary', class: 'text-primary-500 bg-primary-100' },
+	{ type: 'secondary', class: 'text-secondary-500 bg-secondary-100' },
+]
+
+
+export const COLOR_TEXT_ALARM_STYLE: { type: TypeAlarm; class: string }[] = [
+	{ type: 'success', class: 'text-green-500' },
+	{ type: 'error', class: 'text-red-500' },
+	{ type: 'warning', class: 'text-amber-500' },
+	{ type: 'info', class: 'text-sky-500' },
+	{ type: 'loading', class: 'text-gray-500' },
+	{ type: 'time', class: 'text-orange-500' },
+	{ type: 'primary', class: 'text-primary-500' },
+	{ type: 'secondary', class: 'text-secondary-500' },
+]
+
+
+export const SIZE_STYLE: { type: TypeAlarm; class: string }[] = []
+
+export const THEME_COLOR_STYLE: { type: ThemeColor; class: string }[] = [
+	{ type: 'light', class: ""}
+]
