@@ -1,7 +1,7 @@
 {
 	"name": "svelte-forge-ui",
 	"description": "It's a component library for Svelte. These component designs are lightweight and flexible.",
-	"version": "0.0.1-alpha.1",
+	"version": "0.1.0",
 	"private": false,
 	"keywords": [
 		"svelte",
@@ -26,6 +26,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
+		"publish": "npm publish",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -42,12 +43,29 @@
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"./README.md": "./README.md",
-		"./icons/index.d.ts": "./dist/icons/index.d.ts",
-		"./icons/index.js": "./dist/icons/index.js",
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./symbols": {
+			"types": "./dist/icons/index.d.ts",
+			"default": "./dist/icons/index.js"
+		},
+		"./inputs": {
+			"types": "./dist/components/inputs/index.d.ts",
+			"default": "./dist/components/inputs/index.js"
+		},
+		"./textareas": {
+			"types": "./dist/components/textareas/index.d.ts",
+			"default": "./dist/components/textareas/index.js"
+		},
+		"./modals": {
+			"types": "./dist/components/modals/index.d.ts",
+			"default": "./dist/components/modals/index.js"
+		},
+		"./buttons": {
+			"types": "./dist/components/buttons/index.d.ts",
+			"default": "./dist/components/buttons/index.js"
 		}
 	},
 	"homepage": "https://github.com/jorgeluis2000/svelte-forge-ui",
@@ -77,14 +95,12 @@
 		"publint": "^0.2.7",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
+		"tailwind-scrollbar": "^3.1.0",
 		"tailwindcss": "^3.4.3",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"vite": "^5.0.3",
 		"vitest": "^1.2.0"
 	},
-	"type": "module",
-	"dependencies": {
-		"tailwind-scrollbar": "3.1.0"
-	}
+	"type": "module"
 }
