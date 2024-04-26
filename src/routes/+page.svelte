@@ -152,18 +152,18 @@
 	</div>
 
 	<Modal showModal={false}>
-		<section>Hola mundo</section>
-		<ButtonAction theme="danger">Hola mundo</ButtonAction>
+		<section>Hello world</section>
+		<ButtonAction theme="error">Hello world</ButtonAction>
 	</Modal>
 
 	<DecisionModal
 		showModal={true}
 		cancelButton="Cancelar"
-		modalTitle="Hola Mundo"
+		modalTitle="Hello world"
 		theme="warning"
 		nameActionButton="Enviar"
 		type="success"
 	>
-		Hola mundo
+		Hello world
 	</DecisionModal>
 </section>
