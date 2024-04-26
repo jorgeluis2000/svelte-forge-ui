@@ -1,3 +1,3 @@
 
 
-export type ThemeColor = 'light' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark'
+export type ThemeColor = 'light' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info' | 'dark'
