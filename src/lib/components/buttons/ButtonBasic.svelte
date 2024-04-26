@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { cssVariables } from '../../functions/Styles.functions';
 	import type { ThemeColor } from '../../domains/types/ThemeColor.type';
 	import type { ButtonSize } from '../../domains/types/Sizes.type';
 
@@ -19,11 +18,7 @@
 
 <button
 	type="button"
-	use:cssVariables={{
-		color: `var(--${theme})`,
-		textColor: isFilledNow
-	}}
-	class={`btn ${isFilled ? 'filled' : ''} ${className}`}
+	class={`btn  ${isFilled ? 'filled' : ''} ${className}`}
 	data-size={size}
 	on:click={(event) => dispatch('click', event)}
 >
@@ -39,12 +34,6 @@
 
 <style lang="postcss">
 	.btn {
-		display: flex;
-		transition-property: all;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-duration: 300ms;
-		color: var(--textColor);
-		border-color: var(--color);
 		@apply px-4 py-2 border-2 rounded-md text-sm justify-center items-center space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
 	}
 

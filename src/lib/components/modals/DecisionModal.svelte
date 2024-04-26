@@ -1,75 +1,32 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import Modal from './Modal.svelte';
-	import ButtonSimple from '../buttons/ButtonAction.svelte';
+	import ButtonAction from '../buttons/ButtonAction.svelte';
 	import type { ThemeColor } from '../../domains/types/ThemeColor.type';
-	import type { TypeModal } from '../../domains/types/TypeModal.type';
-	import InfoIcon from '../../icons/InfoIcon.svelte';
-	import SuccessIcon from '../../icons/SuccessIcon.svelte';
-	import ErrorIcon from '../../icons/ErrorIcon.svelte';
-	import LoadingIcon from '../../icons/LoadingIcon.svelte';
-	import WarningIcon from '../../icons/WarningIcon.svelte';
-	import TimeSandIcon from '../../icons/TimeSandIcon.svelte';
+	import type { TypeAlarm } from '../../domains/types/TypeAlarm.type';
+	import { getCustomStyle } from '../../functions/Styles.functions';
+	import { COLOR_TEXT_ALARM_STYLE } from './../../constants/Styles.constants';
+	import { DEFAULT_ALARM } from './../../constants/DefaultStyles.constants';
+	import { COLOR_ALARM_STYLE } from './../../constants/Styles.constants';
+	import IconsAlarm from '$lib/icons/IconsAlarm.svelte';
 
 	export let nameActionButton: string;
 	export let modalTitle: string;
 	export let showModal = false;
 	export let theme: ThemeColor = 'light';
 	export let cancelButton: string = 'Cancelar';
-	export let type: TypeModal = 'info';
+	export let type: TypeAlarm = 'info';
 	const dispatch = createEventDispatcher();
+	const styleIconAlarm = getCustomStyle(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
+	const styleTitleAlarm = getCustomStyle(COLOR_TEXT_ALARM_STYLE, type, DEFAULT_ALARM).class;
 </script>
 
 <Modal bind:showModal>
 	<section class="content-header" slot="header">
-		<div
-			class={`content-icon-header ${
-				type === 'success'
-					? 'text-green-500 bg-green-100'
-					: type === 'error'
-						? 'text-red-500 bg-red-100'
-						: type === 'loading'
-							? 'text-gray-500 bg-gray-100'
-							: type === 'warning'
-								? 'text-amber-500 bg-amber-100'
-								: type === 'time'
-									? 'text-orange-500 bg-orange-100'
-									: type === 'info'
-										? 'text-sky-500 bg-sky-100'
-										: 'text-gray-900 bg-gray-50'
-			}`}
-		>
-			{#if type === 'success'}
-				<SuccessIcon />
-			{:else if type === 'error'}
-				<ErrorIcon />
-			{:else if type === 'loading'}
-				<LoadingIcon />
-			{:else if type === 'warning'}
-				<WarningIcon />
-			{:else if type === 'time'}
-				<TimeSandIcon />
-			{:else}
-				<InfoIcon />
-			{/if}
+		<div class={`content-icon-header ${styleIconAlarm}`}>
+			<IconsAlarm {type} />
 		</div>
-		<h3
-			class={`modal-title ${
-				type === 'success'
-					? 'text-green-500'
-					: type === 'error'
-						? 'text-red-500'
-						: type === 'loading'
-							? 'text-gray-500'
-							: type === 'warning'
-								? 'text-amber-500'
-								: type === 'time'
-									? 'text-orange-500'
-									: type === 'info'
-										? 'text-sky-500'
-										: 'text-gray-900'
-			}`}
-		>
+		<h3 class={`modal-title ${styleTitleAlarm}`}>
 			{@html modalTitle}
 		</h3>
 	</section>
@@ -77,8 +34,8 @@
 		<slot />
 	</section>
 	<section class="content-footer" slot="footer">
-		<ButtonSimple
-			theme="danger"
+		<ButtonAction
+			theme="error"
 			className="mx-2 mb-4 sm:mb-0"
 			on:click={() => {
 				showModal = false;
@@ -86,10 +43,10 @@
 			}}
 		>
 			{@html cancelButton}
-		</ButtonSimple>
-		<ButtonSimple isFilled={true} {theme} on:click={() => dispatch('click')} className="mx-2">
+		</ButtonAction>
+		<ButtonAction isFilled={true} {theme} on:click={() => dispatch('click')} className="mx-2">
 			{@html nameActionButton}
-		</ButtonSimple>
+		</ButtonAction>
 	</section>
 </Modal>
 
