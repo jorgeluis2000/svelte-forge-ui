@@ -70,6 +70,19 @@ export function getTextSizeStyle(
 }
 
 /**
+ * Retrieves a custom style object from a list of styles based on a selected value.
+ *
+ * @template TypeStyle - The type of the style object's 'type' property.
+ * @param {Array<{ type: TypeStyle, class: string }>} listStyle - An array of style objects containing a 'type' property of type TypeStyle and a 'class' property of type string.
+ * @param {TypeStyle} selected - The value of the 'type' property to match against the listStyle array.
+ * @param {{ type: TypeStyle, class: string }} defaultNotSelected - The default style object to return if no match is found in the listStyle array.
+ * @returns {{ type: TypeStyle, class: string }} The style object from the listStyle array that matches the 'selected' value, or the 'defaultNotSelected' object if no match is found.
+ */
+export function getCustomStyle<TypeStyle>(listStyle: { type: TypeStyle; class: string }[], selected: TypeStyle, defaultNotSelected: { type: TypeStyle, class: string }): { type: TypeStyle; class: string; } {
+	return listStyle.find(item => item.type === selected) ?? defaultNotSelected;
+}
+
+/**
  * Applies CSS variables to the specified element.
  * @param {HTMLElement} node - The HTML node to which CSS variables will be applied.
  * @param {Record<string, string>} variables - An object containing CSS variables as key-value pairs.
