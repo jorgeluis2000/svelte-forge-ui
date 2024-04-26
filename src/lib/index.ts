@@ -10,11 +10,10 @@ import TextAreaFloat from './components/textareas/floats/TextAreaFloat.svelte';
 
 import type { ItemSelect } from './domains/types/Select.type';
 import type { GroupItemSelect } from './domains/types/Select.type';
-import type { RoundedSize } from './domains/types/Sizes.type';
-import type { TextSize } from './domains/types/Sizes.type';
+import type { TextSize, ButtonSize, RoundedSize } from './domains/types/Sizes.type';
 import type { AutoCompleteInput } from './domains/types/AutoComplete.type';
 
-export type { ItemSelect, GroupItemSelect, RoundedSize, TextSize, AutoCompleteInput };
+export type { ItemSelect, GroupItemSelect, RoundedSize, ButtonSize, TextSize, AutoCompleteInput };
 export {
 	SeoGenerate,
 	InputBasic,
