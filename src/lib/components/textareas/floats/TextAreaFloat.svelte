@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import type { HTMLInputTypeAttribute } from 'svelte/elements';
 	import type { AutoCompleteInput } from '../../../domains/types/AutoComplete.type';
 	import type { RoundedSize, TextSize } from '../../../domains/types/Sizes.type';
 	import { getRoundedStyle, getTextSizeStyle } from '../../../functions/Styles.functions';
@@ -12,21 +11,14 @@
 	export let labelText: string;
 	export let valueInput: string;
 	export let className: string = '';
-	export let type: HTMLInputTypeAttribute = 'text';
 	export let rounded: RoundedSize = 'none';
 	export let textSize: TextSize = 'base';
 	export let required: boolean | null | undefined = false;
-	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
-	const ownTextSize = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class;
-	const ownRounded = getRoundedStyle(ROUNDED_STYLE, rounded).class;
-	function typeAction(node: HTMLInputElement) {
-		node.type = type;
-	}
 </script>
 
 <div class="content-input">
-	<input
+	<textarea
 		bind:value={valueInput}
 		on:input={(event) => dispatch('input', event)}
 		on:blur={(event) => dispatch('blur', event)}
@@ -37,17 +29,19 @@
 		on:keypress={(event) => dispatch('keypress', event)}
 		on:keydown={(event) => dispatch('keydown', event)}
 		on:keyup={(event) => dispatch('keyup', event)}
-		use:typeAction
 		{autocomplete}
 		{maxlength}
 		id={nameInput}
 		name={nameInput}
 		placeholder=" "
 		{required}
-		{pattern}
-		class={`input-fill ${ownRounded} ${className} peer`}
+		class={`textarea-fill ${getRoundedStyle(ROUNDED_STYLE, rounded).class} ${className} peer`}
 	/>
-	<label for={nameInput} class={`label-fill ${ownTextSize} ${ownTextSize}`}>{labelText}</label>
+	<label
+		for={nameInput}
+		class={`label-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class}`}
+		>{labelText}</label
+	>
 </div>
 
 <style lang="postcss">
@@ -57,7 +51,7 @@
 	.label-fill {
 		@apply absolute text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] cursor-text bg-white px-2 peer-focus:z-0 peer-valid:z-0 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1;
 	}
-	.input-fill {
+	.textarea-fill {
 		@apply block px-2.5 pb-2.5 pt-4 w-full text-gray-900 bg-transparent border border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-primary-600;
 	}
 </style>

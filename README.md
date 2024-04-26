@@ -5,12 +5,14 @@
 </div>
 <hr />
 <!-- markdownlint-restore -->
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [The Problem](#the-problem)
 - [This Solution](#this-solution)
 - [Installation](#installation)
+- [Example How to use](#example-how-to-use)
 - [LICENSE](#license)
 
 ## The Problem
@@ -39,6 +41,38 @@ Yarn:
 ```bash
 yarn add svelte-forge-ui
 ```
+
+## Example How to use
+
+We import the library into the `<script></script>` tags and create a variable that will take the data from **InputFloat**.
+
+<!-- markdownlint-disable -->
+
+```typescript
+import { InputFloat } from 'svelte-forge-ui';
+let inputFloat = '';
+```
+
+<!-- markdownlint-restore -->
+
+Now let's call the `<InputFloat/>` component and set the required properties **_nameInput_**, **_labelText_** and **_valueInput_**.
+
+<!-- markdownlint-disable -->
+
+```svelte
+<InputFloat
+	type="text"
+	className=""
+	nameInput="input-float"
+	labelText="Input Float"
+	textSize="sm"
+	bind:valueInput={inputFloat}
+/>
+```
+
+<!-- markdownlint-restore -->
+
+The other properties found are not mandatory but are properties that allow you to modify the style of the component.
 
 ## LICENSE
 

@@ -19,22 +19,27 @@
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
 
-	function onInput(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-		dispatch('input', event);
-	}
-	function typeAction(node: any) {
+	function typeAction(node: HTMLInputElement) {
 		node.type = type;
 	}
 </script>
 
 <input
-	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getRoundedStyle(ROUNDED_STYLE, rounded)?.class ?? 'rounded-none'} ${className}`}
+	class={`input-fill ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class} ${getRoundedStyle(ROUNDED_STYLE, rounded).class} ${className}`}
 	name={nameInput}
 	id={nameInput}
 	use:typeAction
 	bind:value={valueInput}
 	{pattern}
-	on:input|preventDefault={onInput}
+	on:input={(event) => dispatch('input', event)}
+	on:blur={(event) => dispatch('blur', event)}
+	on:change={(event) => dispatch('change', event)}
+	on:focus={(event) => dispatch('focus', event)}
+	on:focusin={(event) => dispatch('focusin', event)}
+	on:focusout={(event) => dispatch('focusout', event)}
+	on:keypress={(event) => dispatch('keypress', event)}
+	on:keydown={(event) => dispatch('keydown', event)}
+	on:keyup={(event) => dispatch('keyup', event)}
 	{maxlength}
 	{placeholder}
 	{autocomplete}
