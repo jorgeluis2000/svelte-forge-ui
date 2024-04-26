@@ -13,3 +13,5 @@ export type TextSize =
 	| '7xl'
 	| '8xl'
 	| '9xl';
+
+export type ButtonSize = 'sm' | 'md' | 'lg';
