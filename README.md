@@ -6,6 +6,9 @@
 <hr />
 <!-- markdownlint-restore -->
 
+> [!WARNING]
+> This library is currently in the creation phase and it is not recommended to implement it in productive environments, but we will soon release our version 1.0.0 which will be the stable version. Likewise, we appreciate that you use our lib for testing while our stable version is available..
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
