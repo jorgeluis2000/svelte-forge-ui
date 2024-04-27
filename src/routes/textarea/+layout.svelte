@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<SeoGenerate
-		title="Examples page"
+		title="Examples Text Areas"
 		author="Jorge Luis Güiza Granobles"
 		category="Lib for Svelte"
 		company={companyInto}
@@ -17,5 +17,4 @@
 		language="en"
 	/>
 </svelte:head>
-
-Search your config
+<slot />
