@@ -1,22 +1,20 @@
 <script lang="ts">
 	import type { RoundedSize, TextSize } from '../../domains/types/Sizes.type';
-	import { getRoundedStyle, getTextSizeStyle } from '../../functions/Styles.functions';
+	import { getCustomStyle } from '../../functions/Styles.functions';
 	import { ROUNDED_STYLE, TEXT_SIZE_STYLE } from '../../constants/Styles.constants';
+	import { DEFAULT_ROUNDED_SIZE, DEFAULT_TEXT_SIZE } from '../../constants/DefaultStyles.constants';
 
 	export let valueText: string = '';
-	export let bgColorHex: string = '';
-	export let borderColorHex: string = '';
-	export let textColorHex: string = '';
+	// // export let colorHex: string = '';
 	export let rounded: RoundedSize = 'full';
 	export let textSize: TextSize = 'base';
 
-	const bgColorClass = `bg-[${bgColorHex}]`;
-	const borderColorClass = `bg-[${borderColorHex}]`;
-	const textColorClass = `bg-[${textColorHex}]`;
+	const ownRoundedStyle = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
+	const ownTextSizeStyle = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
 </script>
 
-<div class={`content-tag ${getRoundedStyle(ROUNDED_STYLE, rounded).class}`}>
-	<p class={`text-tag ${getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class}`}>
+<div class={`content-tag ${ownRoundedStyle}`}>
+	<p class={`text-tag ${ownTextSizeStyle}`}>
 		{valueText}
 		<slot />
 	</p>

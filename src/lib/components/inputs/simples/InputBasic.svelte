@@ -3,8 +3,12 @@
 	import type { HTMLInputTypeAttribute } from 'svelte/elements';
 	import type { AutoCompleteInput } from '../../../domains/types/AutoComplete.type';
 	import type { RoundedSize, TextSize } from '../../../domains/types/Sizes.type';
-	import { getRoundedStyle, getTextSizeStyle } from '../../../functions/Styles.functions';
+	import { getCustomStyle } from '../../../functions/Styles.functions';
 	import { ROUNDED_STYLE, TEXT_SIZE_STYLE } from '../../../constants/Styles.constants';
+	import {
+		DEFAULT_ROUNDED_SIZE,
+		DEFAULT_TEXT_SIZE
+	} from '../../../constants/DefaultStyles.constants';
 
 	export let maxlength: number | null | undefined = null;
 	export let autocomplete: AutoCompleteInput = 'off';
@@ -19,8 +23,8 @@
 	export let required: boolean | null | undefined = false;
 	export let pattern: string | null | undefined = null;
 	const dispatch = createEventDispatcher();
-	const ownTextSize = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class;
-	const ownRoundedStyle = getRoundedStyle(ROUNDED_STYLE, rounded).class;
+	const ownTextSize = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
+	const ownRoundedStyle = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
 	function typeAction(node: HTMLInputElement) {
 		node.type = type;
 	}

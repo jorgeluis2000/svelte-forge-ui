@@ -1,37 +1,46 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { cssVariables } from '../../functions/Styles.functions';
-	import type { ThemeColor } from '../../domains/types/ThemeColor.type';
-	import type { ButtonSize } from '../../domains/types/Sizes.type';
+	import { ROUNDED_STYLE, SIZE_STYLE, TEXT_SIZE_STYLE } from './../../constants/Styles.constants';
+	import {
+		DEFAULT_COLOR_HEX,
+		DEFAULT_ROUNDED_SIZE,
+		DEFAULT_SIZE,
+		DEFAULT_TEXT_SIZE,
+		DEFAULT_THEME
+	} from '../../constants/DefaultStyles.constants';
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { cssVariables, getCustomStyle } from '../../functions/Styles.functions';
+	import { generateColorScale, transformListToObject } from '../../functions/Colors.functions';
+	import type { GeneralSize, RoundedSize, TextSize } from '../../domains/types/Sizes.type';
 
-	export let theme: ThemeColor = 'light';
+	export let theme: string = DEFAULT_THEME;
 	export let isFilled: boolean = false;
 	export let className: string = '';
-	export let size: ButtonSize = 'md';
-	export let sizeIcon: ButtonSize = 'sm';
+	export let textSize: TextSize = 'base';
+	export let rounded: RoundedSize = 'none';
+	export let sizeIcon: GeneralSize = 'base';
 	export let thereIsIcon: boolean = false;
-	let isLight = theme === 'light' ? `var(--success)` : `var(--light)`;
-	let isDanger = theme === 'error' ? `var(--danger)` : `var(--success)`;
-	let isFilledNow = isFilled ? isLight : isDanger;
+	export let colorHex: string = DEFAULT_COLOR_HEX;
+	export let useCss: boolean = false;
 
+	const listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	const colorUseCss: string = useCss ? `var(--${theme}-500)` : listColors['500'];
+	const colorText = isFilled ? 'white' : colorUseCss;
+	const styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
+	const styleRoundedStyle = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
+	const styleTextSize = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
 	const dispatch = createEventDispatcher();
 </script>
 
 <button
 	type="button"
 	use:cssVariables={{
-		color: `var(--${theme})`,
-		textColor: isFilledNow
+		color: colorUseCss,
+		textColor: colorText
 	}}
-	class={`btn ${isFilled ? 'filled' : ''} ${className}`}
-	data-size={size}
+	class={`btn ${isFilled ? 'filled' : ''} ${styleRoundedStyle} ${styleTextSize} ${className}`}
 	on:click={(event) => dispatch('click', event)}
 >
-	<div
-		class={`${thereIsIcon ? 'btn-icon' : 'hidden'} ${
-			sizeIcon === 'sm' ? 'size-5' : sizeIcon === 'md' ? 'size-8' : 'size-14'
-		}`}
-	>
+	<div class={`${thereIsIcon ? 'btn-icon' : 'hidden'} ${styleSizeIcon}`}>
 		<slot name="icon" />
 	</div>
 	<slot />
@@ -45,7 +54,7 @@
 		transition-duration: 300ms;
 		color: var(--textColor);
 		border-color: var(--color);
-		@apply px-4 py-2 border-2 rounded-md text-sm justify-center items-center space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
+		@apply px-4 py-2 border-2 justify-center items-center space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
 	}
 
 	.btn-icon {

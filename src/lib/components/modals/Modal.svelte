@@ -1,17 +1,41 @@
 <script lang="ts">
 	import { fade, scale } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
-	import CloseCircleIcon from '../../icons/CloseCircleIcon.svelte';
+	import CloseCircleIcon from '$lib/icons/CloseCircleIcon.svelte';
+	import { DEFAULT_COLOR_HEX, DEFAULT_THEME } from '$lib/constants/DefaultStyles.constants';
+	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import { cssVariables } from '$lib/functions/Styles.functions';
 
 	export let showModal: boolean;
+	export let theme: string = DEFAULT_THEME;
+	export let colorHex: string = DEFAULT_COLOR_HEX;
+	export let useCss: boolean = false;
 
+	let listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	let scrollbarThumb = useCss ? `var(--${theme}-700)` : listColors['700'];
+	let scrollbarTrack = useCss ? `var(--${theme}-500)` : listColors['500'];
+	let colorBg = useCss ? `var(--${theme}-500)` : listColors['500'];
+	let colorText = useCss ? `var(--${theme}-500)` : listColors['500'];
+	let colorTextHover = useCss ? `var(--${theme}-600)` : listColors['600'];
+	let colorTextActive = useCss ? `var(--${theme}-400)` : listColors['400'];
 	function closeDialog() {
 		showModal = false;
 	}
 </script>
 
 {#if showModal}
-	<section class="container-modal" role="dialog">
+	<section
+		use:cssVariables={{
+			colorBg,
+			scrollbarThumb,
+			scrollbarTrack,
+			colorText,
+			colorTextHover,
+			colorTextActive
+		}}
+		class="container-modal"
+		role="dialog"
+	>
 		<div class="content-bg scroll-standard" transition:fade={{ easing: quintInOut, duration: 300 }}>
 			<div class="center-modal">
 				<article
@@ -39,11 +63,22 @@
 
 <style lang="postcss">
 	.scroll-standard {
-		@apply scrollbar-thin scrollbar-thumb-primary-700 scrollbar-track-primary-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full;
+		--scrollbar-thumb: var(--scrollbarThumb) !important;
+		--scrollbar-track: var(--scrollbarTrack) !important;
+		@apply scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full;
 	}
 
 	.close-dialog {
-		@apply transition-all duration-500 absolute w-7 top-3 right-2 cursor-pointer text-primary-500 hover:text-primary-600 active:text-primary-400;
+		color: var(--colorText);
+		@apply transition-all duration-500 absolute w-7 top-3 right-2 cursor-pointer;
+	}
+
+	.close-dialog:hover {
+		color: var(--colorTextHover);
+	}
+
+	.close-dialog:active {
+		color: var(--colorTextActive);
 	}
 
 	.modal-dialog {
