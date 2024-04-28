@@ -1,7 +1,7 @@
 {
 	"name": "svelte-forge-ui",
 	"description": "It's a component library for Svelte. These component designs are lightweight and flexible.",
-	"version": "0.1.0-alpha.0",
+	"version": "0.1.0-alpha.1",
 	"private": false,
 	"keywords": [
 		"svelte",
@@ -73,9 +73,6 @@
 		"type": "git",
 		"url": "https://github.com/jorgeluis2000/svelte-forge-ui"
 	},
-	"peerDependencies": {
-		"svelte": "^4.0.0"
-	},
 	"devDependencies": {
 		"@playwright/test": "^1.43.1",
 		"@sveltejs/adapter-static": "^3.0.1",
@@ -93,7 +90,6 @@
 		"prettier": "^3.2.5",
 		"prettier-plugin-svelte": "^3.2.3",
 		"publint": "^0.2.7",
-		"svelte": "^4.2.15",
 		"svelte-check": "^3.7.0",
 		"tailwind-scrollbar": "^3.1.0",
 		"tailwindcss": "^3.4.3",
@@ -102,5 +98,11 @@
 		"vite": "^5.2.10",
 		"vitest": "^1.5.2"
 	},
-	"type": "module"
+	"type": "module",
+	"peerDependencies": {
+		"svelte": "^4.0.0"
+	},
+	"dependencies": {
+		"svelte": "^4.2.15"
+	}
 }
