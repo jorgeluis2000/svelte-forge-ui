@@ -90,6 +90,7 @@
 >
 	<div class={`input-fill ${focusShow ? 'active' : ''} ${ownTextSize} ${ownRounded} peer`}>
 		<button
+			type="button"
 			on:click|preventDefault={() => {
 				focusShow = !focusShow;
 			}}

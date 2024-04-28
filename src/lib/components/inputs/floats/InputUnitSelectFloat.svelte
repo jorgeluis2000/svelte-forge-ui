@@ -75,6 +75,7 @@
 >
 	<div class={`input-fill ${focusShow ? 'active' : ''} ${ownTextSize} ${ownRounded} peer`}>
 		<button
+			type="button"
 			on:click={() => (focusShow = !focusShow)}
 			class={`flex justify-center items-center overflow-hidden w-full ${
 				valueInput !== null ? '' : 'text-gray-400'
