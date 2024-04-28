@@ -34,6 +34,23 @@ export function cssVariables(node: HTMLElement, variables: Record<string, string
 	};
 }
 
+
+export function cssVariablesSVG(node: SVGElement, variables: Record<string, string>) {
+	setCssVariablesSVG(node, variables);
+
+	return {
+		update(variables: Record<string, string>) {
+			setCssVariablesSVG(node, variables);
+		}
+	}
+}
+
+function setCssVariablesSVG(node: SVGElement, variables: Record<string, string>) {
+	for (const name in variables) {
+		node.style.setProperty(`--${name}`, variables[name]);
+	}
+}
+
 /**
  * Sets CSS variables on the specified element.
  * @param {HTMLElement} node - The HTML node to which CSS variables will be applied.
@@ -44,4 +61,8 @@ function setCssVariables(node: HTMLElement, variables: Record<string, string>) {
 	for (const name in variables) {
 		node.style.setProperty(`--${name}`, variables[name]);
 	}
+}
+
+export function setTypeAction(node: HTMLInputElement, typeInput: string) {
+	node.type = typeInput;
 }
