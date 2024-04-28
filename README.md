@@ -77,9 +77,9 @@ Now let's call the `<InputFloat/>` component and set the required properties **_
 
 <!-- markdownlint-restore -->
 
-Además puedes utilizar variables de css para colocar tus propios colores. Lo primero será crear el nombre de tu tema, por defecto se llama **`primary`** pero lo puedes cambiar con la propiedad **`theme`**.
+You can also use CSS variables to place your own colors. The first thing will be to create the name of your theme, by default it is called **`primary`** but you can change it with the **`theme`** property.
 
-Luego de escoger el nombre o pensar si dejarlo por defecto, deberás crear las variables de css en `:root` para que tus componentes tenga colores. El formato que se debe usar para estas variables debe ser el **nombre del tema** que escogiste **enseguida de un guio** y los **números del 100 al 900 de 100 en 100**. A continuación veremos un ejemplo teniendo en cuenta que nuestro tema se llama **`primary`**:
+After choosing the name or thinking about whether to leave it as default, you will have to create the css variables in `:root` so that your components have colors. The format that should be used for these variables should be the **name of the topic** that you chose **followed by a hyphen** and the **numbers from 100 to 900 of 100 in 100**. Below we will see an example taking into account that our theme is called **`primary`**:
 
 <!-- markdownlint-disable -->
 
@@ -99,7 +99,7 @@ Luego de escoger el nombre o pensar si dejarlo por defecto, deberás crear las v
 
 <!-- markdownlint-restore -->
 
-Ahora en el componente para activar las variables de css deberá usar la propiedad **`useCss`** y el componente quedaría de esta forma:
+Now in the component to activate the CSS variables you must use the **`useCss`** property and the component would look like this:
 
 <!-- markdownlint-disable -->
 
