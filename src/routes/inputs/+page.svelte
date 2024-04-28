@@ -5,7 +5,6 @@
 	import InputUnitSelectFloat from '$lib/components/inputs/floats/InputUnitSelectFloat.svelte';
 	import type { ItemSelect } from '$lib/domains/types/Select.type';
 	import InputNatural from '$lib/components/inputs/simples/InputNatural.svelte';
-	
 
 	let inputFloat = '';
 	let inputBasic = '';
@@ -17,7 +16,6 @@
 		{ name: 'algo3', text: 'Test 3 Select Float', value: '3' },
 		{ name: 'algo4', text: 'Test 4 Select Float', value: '4' }
 	];
-	const companyInto = { name: 'Jorge Luis Güiza Granobles', address: [''], telephone: [''] };
 </script>
 
 <div class="flex w-full" id="inputs">

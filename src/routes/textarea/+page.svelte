@@ -16,7 +16,6 @@
 		placeholder="Text Area Natural"
 		textSize="base"
 		rounded="none"
-		maxlength={10}
 		bind:valueInput={textAreaNatural}
 	/>
 </div>
@@ -27,7 +26,6 @@
 		placeholder="Text Area Simple"
 		textSize="base"
 		rounded="none"
-		maxlength={2}
 		bind:valueInput={textAreaNatural}
 	/>
 </div>
@@ -38,7 +36,6 @@
 		nameInput="textarea-float"
 		textSize="base"
 		rounded="none"
-		maxlength={2}
 		bind:valueInput={textAreaNatural}
 	/>
 </div>

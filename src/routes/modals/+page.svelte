@@ -13,7 +13,7 @@
 </script>
 
 <div class="flex w-full" id="textareas">
-	<h2 class="text-xl font-semibold">Text Area Section</h2>
+	<h2 class="text-xl font-semibold">Modals Section</h2>
 </div>
 
 <ButtonAction

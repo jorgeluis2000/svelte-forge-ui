@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<SeoGenerate
-		title="Examples Text Areas"
+		title="Examples Text Inputs"
 		author="Jorge Luis Güiza Granobles"
 		category="Lib for Svelte"
 		company={companyInto}
