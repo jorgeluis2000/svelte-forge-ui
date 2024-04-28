@@ -4,7 +4,7 @@
 	import { DEFAULT_THEME, DEFAULT_COLOR_HEX } from '$lib/constants/DefaultStyles.constants';
 	import type { AutoCompleteInput } from '$lib/domains/types/AutoComplete.type';
 	import type { RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
-	import { cssVariables, getCustomStyle } from '$lib/functions/Styles.functions';
+	import { cssVariables, getCustomStyle, setTypeAction } from '$lib/functions/Styles.functions';
 	import { ROUNDED_STYLE, TEXT_SIZE_STYLE } from '$lib/constants/Styles.constants';
 	import { DEFAULT_ROUNDED_SIZE, DEFAULT_TEXT_SIZE } from '$lib/constants/DefaultStyles.constants';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
@@ -24,15 +24,12 @@
 	export let colorHex: string = DEFAULT_COLOR_HEX;
 	export let useCss: boolean = false;
 
-	const dispatch = createEventDispatcher();
-	const listColors = transformListToObject(generateColorScale(colorHex), colorHex);
-	const colorText = useCss ? `var(--${theme}-500)` : listColors['500'];
-	const colorBorder = useCss ? `var(--${theme}-600)` : listColors['600'];
-	const ownTextSize = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
-	const ownRounded = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
-	function typeAction(node: HTMLInputElement) {
-		node.type = type;
-	}
+	let dispatch = createEventDispatcher();
+	let listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	let colorText = useCss ? `var(--${theme}-500)` : listColors['500'];
+	let colorBorder = useCss ? `var(--${theme}-600)` : listColors['600'];
+	let ownTextSize = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
+	let ownRounded = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
 </script>
 
 <div
@@ -53,7 +50,7 @@
 		on:keypress={(event) => dispatch('keypress', event)}
 		on:keydown={(event) => dispatch('keydown', event)}
 		on:keyup={(event) => dispatch('keyup', event)}
-		use:typeAction
+		use:setTypeAction={type}
 		{autocomplete}
 		{maxlength}
 		id={nameInput}

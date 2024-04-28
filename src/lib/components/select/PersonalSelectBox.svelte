@@ -1,8 +1,19 @@
 <script lang="ts">
-	import XMark from './../../icons/XMark.svelte';
-	import type { ItemSelect } from './../../domains/types/Select.type';
+	import XMark from '$lib/icons/XMark.svelte';
+	import { DEFAULT_COLOR_HEX, DEFAULT_THEME } from '$lib/constants/DefaultStyles.constants';
+	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import { cssVariables } from '$lib/functions/Styles.functions';
+	import type { ItemSelect } from '$lib/domains/types/Select.type';
 	export let selected: ItemSelect | null;
 	export let listShow: ItemSelect[];
+	export let theme: string = DEFAULT_THEME;
+	export let colorHex: string = DEFAULT_COLOR_HEX;
+	export let useCss: boolean = false;
+
+	let listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	let color500 = useCss ? `var(--${theme}-500)` : listColors['500'];
+	let color300 = useCss ? `var(--${theme}-300)` : listColors['300'];
+
 	async function handlerSelected(item: ItemSelect) {
 		const sameSelected = selected?.value === item.value;
 		if (sameSelected) {
@@ -16,6 +27,10 @@
 <ul>
 	{#each listShow as item}
 		<button
+			use:cssVariables={{
+				color500,
+				color300
+			}}
 			type="button"
 			on:click={() => {
 				handlerSelected(item);
@@ -36,9 +51,11 @@
 
 <style lang="postcss">
 	.my-check-box {
-		@apply flex justify-center items-center transition-all duration-300 text-primary-500 border border-primary-300 w-5 h-5;
+		color: var(--color500);
+		border-color: var(--color300);
+		@apply flex justify-center items-center transition-all duration-300 border w-5 h-5;
 	}
 	.my-check-box.activate {
-		@apply border-primary-500;
+		border-color: var(--color500);
 	}
 </style>
