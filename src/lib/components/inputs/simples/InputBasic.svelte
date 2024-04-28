@@ -1,10 +1,17 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import type { HTMLInputTypeAttribute } from 'svelte/elements';
-	import type { AutoCompleteInput } from '../../../domains/types/AutoComplete.type';
-	import type { RoundedSize, TextSize } from '../../../domains/types/Sizes.type';
-	import { getRoundedStyle, getTextSizeStyle } from '../../../functions/Styles.functions';
-	import { ROUNDED_STYLE, TEXT_SIZE_STYLE } from '../../../constants/Styles.constants';
+	import type { AutoCompleteInput } from '$lib/domains/types/AutoComplete.type';
+	import type { RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
+	import { cssVariables, getCustomStyle, setTypeAction } from '$lib/functions/Styles.functions';
+	import { ROUNDED_STYLE, TEXT_SIZE_STYLE } from '$lib/constants/Styles.constants';
+	import {
+		DEFAULT_COLOR_HEX,
+		DEFAULT_ROUNDED_SIZE,
+		DEFAULT_TEXT_SIZE,
+		DEFAULT_THEME
+	} from '$lib/constants/DefaultStyles.constants';
+	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
 
 	export let maxlength: number | null | undefined = null;
 	export let autocomplete: AutoCompleteInput = 'off';
@@ -18,20 +25,26 @@
 	export let textSize: TextSize = 'base';
 	export let required: boolean | null | undefined = false;
 	export let pattern: string | null | undefined = null;
+	export let theme: string = DEFAULT_THEME;
+	export let colorHex: string = DEFAULT_COLOR_HEX;
+	export let useCss: boolean = false;
+
 	const dispatch = createEventDispatcher();
-	const ownTextSize = getTextSizeStyle(TEXT_SIZE_STYLE, textSize).class;
-	const ownRoundedStyle = getRoundedStyle(ROUNDED_STYLE, rounded).class;
-	function typeAction(node: HTMLInputElement) {
-		node.type = type;
-	}
+	let listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	let colorBorder = useCss ? `var(--${theme}-600)` : listColors['600'];
+	const ownTextSize = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
+	const ownRoundedStyle = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
 </script>
 
 <label for={nameInput} class={`label-fill ${ownTextSize}`}>{labelText}</label>
 <input
+	use:cssVariables={{
+		colorBorder
+	}}
 	class={`input-fill ${ownTextSize} ${ownRoundedStyle} ${className}`}
 	name={nameInput}
 	id={nameInput}
-	use:typeAction
+	use:setTypeAction={type}
 	bind:value={valueInput}
 	{pattern}
 	on:input={(event) => dispatch('input', event)}
@@ -54,6 +67,9 @@
 		@apply block mb-2 font-medium text-gray-900;
 	}
 	.input-fill {
-		@apply block px-2.5 py-2.5 w-full text-gray-900 bg-transparent border border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-primary-600;
+		&:focus {
+			border-color: var(--colorBorder);
+		}
+		@apply block px-2.5 py-2.5 w-full text-gray-900 bg-transparent border border-gray-400 appearance-none focus:outline-none focus:ring-0;
 	}
 </style>

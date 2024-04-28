@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root {
-    --primary: #179f8b;
-    --secondary: #12556e;
-    --success: #22c55e;
-    --danger: #dc2626;
-    --warning: #f59e0b;
-    --info: #06b6d4;
-    --light: #f0fdf4;
-    --dark: #030712;
-  }
+html {
+  overflow-x: hidden;
+}

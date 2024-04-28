@@ -8,12 +8,15 @@ import TextAreaSimple from './components/textareas/simples/TextAreaSimple.svelte
 import TextAreaNatural from './components/textareas/simples/TextAreaNatural.svelte';
 import TextAreaFloat from './components/textareas/floats/TextAreaFloat.svelte';
 
-import type { ItemSelect } from './domains/types/Select.type';
-import type { GroupItemSelect } from './domains/types/Select.type';
-import type { TextSize, ButtonSize, RoundedSize } from './domains/types/Sizes.type';
 import type { AutoCompleteInput } from './domains/types/AutoComplete.type';
+import type { ItemSelect, GroupItemSelect } from './domains/types/Select.type';
+import type { SEOGenerate, IntoCompany } from './domains/types/SEO.type'
+import type { TextSize, RoundedSize, GeneralSize } from './domains/types/Sizes.type';
+import type { StyleClass } from './domains/types/Style.type'
+import type { ThemeColor } from './domains/types/ThemeColor.type'
+import type { TypeAlarm } from './domains/types/TypeAlarm.type'
 
-export type { ItemSelect, GroupItemSelect, RoundedSize, ButtonSize, TextSize, AutoCompleteInput };
+export type { ItemSelect, GroupItemSelect, RoundedSize, GeneralSize, TextSize, AutoCompleteInput, SEOGenerate, IntoCompany, StyleClass, ThemeColor, TypeAlarm };
 export {
 	SeoGenerate,
 	InputBasic,

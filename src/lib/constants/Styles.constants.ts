@@ -1,6 +1,10 @@
-import type { RoundedSize, TextSize } from './../domains/types/Sizes.type';
+import type { StyleClass } from '../domains/types/Style.type';
+import type { ThemeColor } from '../domains/types/ThemeColor.type';
+import type { TypeAlarm } from '../domains/types/TypeAlarm.type';
+import type { GeneralSize, RoundedSize, TextSize } from './../domains/types/Sizes.type';
+import { DEFAULT_COLOR_ERROR, DEFAULT_COLOR_HEX, DEFAULT_COLOR_INFO, DEFAULT_COLOR_LOADING, DEFAULT_COLOR_SUCCESS, DEFAULT_COLOR_TIME, DEFAULT_COLOR_WARNING } from './DefaultStyles.constants';
 
-export const ROUNDED_STYLE: { type: RoundedSize; class: string }[] = [
+export const ROUNDED_STYLE: StyleClass<RoundedSize>[] = [
 	{ type: 'none', class: 'rounded-none' },
 	{ type: 'sm', class: 'rounded-sm' },
 	{ type: 'base', class: 'rounded' },
@@ -12,7 +16,7 @@ export const ROUNDED_STYLE: { type: RoundedSize; class: string }[] = [
 	{ type: 'full', class: 'rounded-full' }
 ];
 
-export const TEXT_SIZE_STYLE: { type: TextSize; class: string }[] = [
+export const TEXT_SIZE_STYLE: StyleClass<TextSize>[] = [
 	{ type: 'xs', class: 'text-xs' },
 	{ type: 'sm', class: 'text-sm' },
 	{ type: 'base', class: 'text-base' },
@@ -27,3 +31,46 @@ export const TEXT_SIZE_STYLE: { type: TextSize; class: string }[] = [
 	{ type: '8xl', class: 'text-8xl' },
 	{ type: '9xl', class: 'text-9xl' }
 ];
+
+
+export const COLOR_ALARM_FULL_STYLE: StyleClass<TypeAlarm>[] = [
+	{ type: 'success', class: 'text-green-500 bg-green-100' },
+	{ type: 'error', class: 'text-red-500 bg-red-100' },
+	{ type: 'warning', class: 'text-amber-500 bg-amber-100' },
+	{ type: 'info', class: 'text-sky-500 bg-sky-100' },
+	{ type: 'loading', class: 'text-gray-500 bg-gray-100' },
+	{ type: 'time', class: 'text-orange-500 bg-orange-100' }
+]
+
+export const COLOR_ALARM_STYLE: StyleClass<TypeAlarm>[] = [
+	{ type: 'success', class: DEFAULT_COLOR_SUCCESS },
+	{ type: 'error', class: DEFAULT_COLOR_ERROR },
+	{ type: 'warning', class: DEFAULT_COLOR_WARNING },
+	{ type: 'info', class: DEFAULT_COLOR_INFO },
+	{ type: 'loading', class: DEFAULT_COLOR_LOADING },
+	{ type: 'time', class: DEFAULT_COLOR_TIME },
+]
+
+
+export const COLOR_TEXT_ALARM_STYLE: StyleClass<TypeAlarm>[] = [
+	{ type: 'success', class: 'text-green-500' },
+	{ type: 'error', class: 'text-red-500' },
+	{ type: 'warning', class: 'text-amber-500' },
+	{ type: 'info', class: 'text-sky-500' },
+	{ type: 'loading', class: 'text-gray-500' },
+	{ type: 'time', class: 'text-orange-500' }
+]
+
+
+export const SIZE_STYLE: StyleClass<GeneralSize>[] = [
+	{ type: 'xs', class: 'size-2.5' },
+	{ type: 'sm', class: 'size-5' },
+	{ type: 'base', class: 'size-6' },
+	{ type: 'md', class: 'size-8' },
+	{ type: 'lg', class: 'size-14' },
+	{ type: 'xl', class: 'size-16' }
+]
+
+export const THEME_COLOR_STYLE: StyleClass<ThemeColor>[] = [
+	{ type: 'info', class: "" }
+]
