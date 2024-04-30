@@ -9,11 +9,23 @@
 	import LoadingIcon from '$lib/icons/LoadingIcon.svelte';
 	import type { TypeToast } from '$lib/domains/interfaces/Toast.interface';
 	import WarningIcon from '$lib/icons/WarningIcon.svelte';
+	import { cssVariables, getCustomStyle } from '$lib/functions/Styles.functions';
+	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import { COLOR_ALARM_STYLE, SIZE_STYLE } from '$lib/constants/Styles.constants';
+	import { DEFAULT_ALARM, DEFAULT_SIZE } from '$lib/constants/DefaultStyles.constants';
+	import type { GeneralSize } from '$lib/domains/types/Sizes.type';
 
 	const dispatch = createEventDispatcher();
 
 	export let type: TypeToast = 'custom';
 	export let dismissible: boolean = true;
+	export let sizeIcon: GeneralSize = 'base';
+	const styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
+
+	let styleAlarm = getCustomStyle(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
+	let listColors = transformListToObject(generateColorScale(styleAlarm), styleAlarm);
+	let colorIconText = listColors['500'];
+	let colorIconBg = listColors['100'];
 </script>
 
 <button
@@ -23,15 +35,55 @@
 	transition:fly={{ easing: quintOut, x: 250, duration: 800 }}
 >
 	{#if type === 'success'}
-		<SuccessIcon className="size-5" />
+		<div
+			use:cssVariables={{
+				colorIconText,
+				colorIconBg
+			}}
+			class="container-icon"
+		>
+			<SuccessIcon className={styleSizeIcon} />
+		</div>
 	{:else if type === 'error'}
-		<ErrorIcon className="size-5" />
+		<div
+			use:cssVariables={{
+				colorIconText,
+				colorIconBg
+			}}
+			class="container-icon"
+		>
+			<ErrorIcon className={styleSizeIcon} />
+		</div>
 	{:else if type === 'loading'}
-		<LoadingIcon className="size-5" />
+		<div
+			use:cssVariables={{
+				colorIconText,
+				colorIconBg
+			}}
+			class="container-icon"
+		>
+			<LoadingIcon className={styleSizeIcon} />
+		</div>
 	{:else if type === 'warning'}
-		<WarningIcon className="size-5" />
+		<div
+			use:cssVariables={{
+				colorIconText,
+				colorIconBg
+			}}
+			class="container-icon"
+		>
+			<WarningIcon className={styleSizeIcon} />
+		</div>
 	{:else if type === 'info'}
-		<InfoIcon className="size-5" />
+		<div
+			use:cssVariables={{
+				colorIconText,
+				colorIconBg
+			}}
+			class="container-icon"
+		>
+			<InfoIcon className={styleSizeIcon} />
+		</div>
 	{:else}
 		<slot name="icon"></slot>
 	{/if}
@@ -58,5 +110,11 @@
 
 	.content-message {
 		@apply ml-2 text-sm text-justify font-normal;
+	}
+
+	.container-icon {
+		background-color: var(--colorIconBg);
+		color: var(--colorIconText);
+		@apply flex justify-center items-center size-8 rounded-md;
 	}
 </style>
