@@ -1,6 +1,6 @@
-import type { StyleClass } from "../domains/types/Style.type";
-import type { GeneralSize, RoundedSize, TextSize } from "../domains/types/Sizes.type";
-import type { TypeAlarm } from "../domains/types/TypeAlarm.type";
+import type { StyleClass } from "$lib/domains/types/Style.type";
+import type { GeneralSize, RoundedSize, TextSize } from "$lib/domains/types/Sizes.type";
+import type { TypeAlarm } from "$lib/domains/types/TypeAlarm.type";
 
 export const DEFAULT_ALARM: StyleClass<TypeAlarm> = { type: 'info', class: 'text-sky-500 bg-sky-100' }
 export const DEFAULT_SIZE: StyleClass<GeneralSize> = { type: 'base', class: 'size-6' }

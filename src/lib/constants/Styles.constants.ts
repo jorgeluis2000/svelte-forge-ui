@@ -1,8 +1,8 @@
-import type { StyleClass } from '../domains/types/Style.type';
-import type { ThemeColor } from '../domains/types/ThemeColor.type';
-import type { TypeAlarm } from '../domains/types/TypeAlarm.type';
-import type { GeneralSize, RoundedSize, TextSize } from './../domains/types/Sizes.type';
-import { DEFAULT_COLOR_ERROR, DEFAULT_COLOR_HEX, DEFAULT_COLOR_INFO, DEFAULT_COLOR_LOADING, DEFAULT_COLOR_SUCCESS, DEFAULT_COLOR_TIME, DEFAULT_COLOR_WARNING } from './DefaultStyles.constants';
+import type { StyleClass } from '$lib/domains/types/Style.type';
+import type { ThemeColor } from '$lib/domains/types/ThemeColor.type';
+import type { TypeAlarm } from '$lib/domains/types/TypeAlarm.type';
+import type { GeneralSize, RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
+import { DEFAULT_COLOR_ERROR, DEFAULT_COLOR_INFO, DEFAULT_COLOR_LOADING, DEFAULT_COLOR_SUCCESS, DEFAULT_COLOR_TIME, DEFAULT_COLOR_WARNING } from './DefaultStyles.constants';
 
 export const ROUNDED_STYLE: StyleClass<RoundedSize>[] = [
 	{ type: 'none', class: 'rounded-none' },

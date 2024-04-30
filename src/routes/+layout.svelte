@@ -10,6 +10,8 @@
 	<a class="move-pages" href="/inputs">Inputs</a>
 	<span>/</span>
 	<a class="move-pages" href="/textarea">TextAreas</a>
+	<span>/</span>
+	<a class="move-pages" href="/toasts">Toasts</a>
 </section>
 <section class="m-5 space-y-10">
 	<slot />
