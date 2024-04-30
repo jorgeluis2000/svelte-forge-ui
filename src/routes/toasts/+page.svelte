@@ -5,20 +5,26 @@
 	import { addLoadingToast, addToast, updateToast, generateID } from '$lib/stores/ToastStore';
 
 	function eventNewToast() {
-		const myId = generateID();
-
-		addToast({ id: myId, message: 'Loading data...', type: 'warning' });
+		addToast({
+			message: 'New Toast...',
+			type: 'success',
+			dismissible: true,
+			timeout: 4000
+		});
 	}
 
 	function eventNewToastLoading() {
 		const myId = generateID();
-
 		addLoadingToast({ id: myId, message: 'Loading data...' });
-		updateToast({ id: myId, message: 'New Message now', type: 'error' });
+		updateToast({
+			id: myId,
+			message: 'New Message now',
+			type: 'error'
+		});
 	}
 </script>
 
-<ContainerToast></ContainerToast>
+<ContainerToast sizeIcon="sm"></ContainerToast>
 
 <ButtonAction rounded="md" textSize="sm" thereIsIcon on:click={eventNewToast}>
 	<div slot="icon">
