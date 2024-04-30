@@ -1,1 +1,1 @@
-export type TypeAlarm = 'info' | 'error' | 'warning' | 'success' | 'loading' | 'time'
+export type TypeAlarm = 'info' | 'error' | 'warning' | 'success' | 'loading' | 'time';

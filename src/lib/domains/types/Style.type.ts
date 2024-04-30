@@ -1,4 +1,4 @@
 export type StyleClass<T> = {
-  type: T;
-  class: string;
-}
+	type: T;
+	class: string;
+};

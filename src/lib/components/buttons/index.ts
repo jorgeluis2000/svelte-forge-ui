@@ -1,3 +1,3 @@
-import ButtonAction from "./ButtonAction.svelte";
+import ButtonAction from './ButtonAction.svelte';
 
-export { ButtonAction }
+export { ButtonAction };

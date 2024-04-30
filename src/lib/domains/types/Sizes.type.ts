@@ -14,10 +14,4 @@ export type TextSize =
 	| '8xl'
 	| '9xl';
 
-export type GeneralSize =
-	| 'xs'
-	| 'sm'
-	| 'base'
-	| 'md'
-	| 'lg'
-	| 'xl'
+export type GeneralSize = 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl';
