@@ -13,6 +13,7 @@
 	let listColors = transformListToObject(generateColorScale(colorHex), colorHex);
 	let color500 = useCss ? `var(--${theme}-500)` : listColors['500'];
 	let color300 = useCss ? `var(--${theme}-300)` : listColors['300'];
+	let color100 = useCss ? `var(--${theme}-100)` : listColors['100'];
 
 	async function handlerSelected(item: ItemSelect) {
 		const exist = selected.find((searching) => searching.value === item.value);
@@ -24,18 +25,19 @@
 	}
 </script>
 
-<ul>
+<ul class="container">
 	{#each listShow as item}
 		<button
 			use:cssVariables={{
 				color500,
-				color300
+				color300,
+				color100
 			}}
 			type="button"
 			on:click={() => {
 				handlerSelected(item);
 			}}
-			class="flex my-3"
+			class="box"
 		>
 			<span
 				class={`my-check-box ${
@@ -61,5 +63,20 @@
 	}
 	.my-check-box.activate {
 		border-color: var(--color500);
+	}
+
+	.container {
+		@apply w-full;
+	}
+	.box {
+		@apply duration-500 flex py-3 px-2 w-full;
+	}
+
+	.box:hover {
+		background-color: var(--color100);
+	}
+
+	.container:hover > :not(:hover) {
+		@apply opacity-45;
 	}
 </style>
