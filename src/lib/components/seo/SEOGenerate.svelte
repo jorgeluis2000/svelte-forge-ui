@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { IntoCompany } from '../../domains/types/SEO.type';
+	import type { IntoCompany } from '$lib/domains/types/SEO.type';
 
 	export let title: string;
 	export let author: string;
@@ -13,7 +13,7 @@
 	export let category: string;
 	export let language: string;
 	export let type: string = 'website';
-	export let icon = '/company/favicon.svg';
+	export let icon = 'favicon.svg';
 	let url = '';
 	let hostname = '';
 	onMount(() => {
@@ -22,6 +22,7 @@
 	});
 </script>
 
+<title>{title}</title>
 <!-- Important SEO -->
 <link rel="icon" type="image/svg+xml+ico+png" href={icon} />
 <meta name="author" content={author} />

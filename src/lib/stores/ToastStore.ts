@@ -59,11 +59,11 @@ export function getTypeToast(httpCode: number) {
 
     if (httpCode >= 1000 && httpCode <= 2999) {
         typeToast = 'success'
-    } else if(httpCode <= 3999) {
+    } else if (httpCode <= 3999) {
         typeToast = 'info'
     } else if (httpCode <= 4999) {
         typeToast = 'error'
-    } else if(httpCode >= 5000){
+    } else if (httpCode >= 5000) {
         typeToast = 'warning'
     }
     return typeToast
