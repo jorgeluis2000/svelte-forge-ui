@@ -9,4 +9,15 @@ import TimeSandIcon from './TimeSandIcon.svelte';
 import WarningIcon from './WarningIcon.svelte';
 import IconsAlarm from './IconsAlarm.svelte';
 
-export { TwoArrows, XMark, CloseCircleIcon, InfoIcon, ErrorIcon, LoadingIcon, SuccessIcon, TimeSandIcon, WarningIcon, IconsAlarm };
+export {
+	TwoArrows,
+	XMark,
+	CloseCircleIcon,
+	InfoIcon,
+	ErrorIcon,
+	LoadingIcon,
+	SuccessIcon,
+	TimeSandIcon,
+	WarningIcon,
+	IconsAlarm
+};

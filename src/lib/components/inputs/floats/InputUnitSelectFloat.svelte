@@ -73,10 +73,11 @@
 	}}
 	class={`content-input ${className}`}
 >
-	<div class={`input-fill ${focusShow ? 'active' : ''} ${ownTextSize} ${ownRounded} peer`}>
+	<section class={`input-fill  ${focusShow ? 'active' : ''} ${ownTextSize} ${ownRounded} peer`}>
 		<button
+			type="button"
 			on:click={() => (focusShow = !focusShow)}
-			class={`flex justify-center items-center overflow-hidden w-full ${
+			class={`flex px-2.5 pb-2.5 pt-4 pr-10 mr-11 justify-center items-center overflow-hidden w-full ${
 				valueInput !== null ? '' : 'text-gray-400'
 			}`}
 		>
@@ -97,7 +98,7 @@
 		<button type="button" class="button-arrow" on:click={() => (focusShow = !focusShow)}>
 			<TwoArrows className="w-4" />
 		</button>
-	</div>
+	</section>
 	<input type="text" class="sr-only" name={nameInput} id={nameInput} value={showSelected} />
 	<label for={nameInput} class={`label-fill ${focusShow ? 'active' : ''} ${ownTextSize}`}
 		>{labelText}</label
@@ -105,7 +106,7 @@
 
 	{#if focusShow}
 		<section class={`container-select scroll-style ${ownTextSize}`} transition:slide>
-			<div class="realtive">
+			<div class="w-full">
 				<div class="container-search">
 					<InputNatural
 						type="search"
@@ -157,25 +158,25 @@
 		color: var(--colorText);
 	}
 	.input-fill {
-		@apply flex px-2.5 pb-2.5 pt-4 pr-10 w-full h-12 text-gray-900 bg-transparent border border-gray-400 appearance-none focus:outline-none focus:ring-0;
+		@apply flex w-full h-12 text-gray-900 bg-transparent border border-gray-400 appearance-none focus:outline-none focus:ring-0;
 	}
 
 	.input-fill.active {
 		border-color: var(--colorBorder);
 	}
 	.container-select {
-		@apply absolute flex flex-col shadow-md w-full rounded-b-md max-h-[15rem] overflow-x-hidden bg-white z-10;
+		@apply absolute flex shadow-md w-full rounded-b-md max-h-[15rem] bg-white z-10;
 	}
 
 	.scroll-style {
 		--scrollbar-thumb: var(--colorScrollThumb) !important;
 		--scrollbar-track: var(--colorScrollTrack) !important;
-		@apply scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full overflow-y-auto;
+		@apply scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full overflow-y-auto w-full;
 	}
 	.container-search {
-		@apply sticky top-0 w-full bg-white px-2 py-3;
+		@apply sticky top-0 w-full bg-white px-2 py-3 z-10;
 	}
 	.content-list-items {
-		@apply flex flex-col px-5 mb-4;
+		@apply flex mb-4 w-full;
 	}
 </style>

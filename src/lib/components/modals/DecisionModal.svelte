@@ -41,7 +41,7 @@
 			}}
 			class={`content-icon-header `}
 		>
-			<IconsAlarm {type} />
+			<IconsAlarm {type} className="size-8" />
 		</div>
 		<h3
 			use:cssVariables={{
@@ -57,7 +57,6 @@
 	</section>
 	<section class="content-footer" slot="footer">
 		<ButtonAction
-			className="mx-2 mb-4 sm:mb-0"
 			rounded="lg"
 			colorHex={DEFAULT_COLOR_ERROR}
 			on:click={() => {
@@ -72,7 +71,6 @@
 			colorHex={DEFAULT_COLOR_SUCCESS}
 			rounded="lg"
 			on:click={() => dispatch('click')}
-			className="mx-2"
 		>
 			{@html nameActionButton}
 		</ButtonAction>
@@ -94,6 +92,6 @@
 		@apply mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10;
 	}
 	.content-footer {
-		@apply flex flex-col justify-center items-center sm:flex-row sm:px-6 mt-5;
+		@apply flex flex-col justify-center gap-3 items-center sm:flex-row mt-5;
 	}
 </style>

@@ -20,12 +20,14 @@ export function generateColorScale(baseColor: string, steps: number = 8): string
 		});
 		colorScale.shift();
 		colorScale.reverse();
-	} catch (error) { }
+	} catch (error) {}
 	return colorScale;
-
 }
 
-export function transformListToObject(colorList: string[], defaultValue: string): { [key: string]: string } {
+export function transformListToObject(
+	colorList: string[],
+	defaultValue: string
+): { [key: string]: string } {
 	const transformedObject: { [key: string]: string } = {};
 
 	colorList.forEach((color, index) => {
@@ -33,7 +35,7 @@ export function transformListToObject(colorList: string[], defaultValue: string)
 		transformedObject[key.toString()] = color;
 	});
 
-	transformedObject["DEFAULT"] = defaultValue;
+	transformedObject['DEFAULT'] = defaultValue;
 
 	return transformedObject;
 }

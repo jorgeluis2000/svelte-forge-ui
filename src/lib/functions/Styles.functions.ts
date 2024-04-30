@@ -9,8 +9,12 @@ import type { StyleClass } from '../domains/types/Style.type';
  * @param {StyleClass<TypeStyle>} defaultNotSelected - The default style object to return if no match is found in the listStyle array.
  * @returns {StyleClass<TypeStyle>} The style object from the listStyle array that matches the 'selected' value, or the 'defaultNotSelected' object if no match is found.
  */
-export function getCustomStyle<TypeStyle>(listStyle: StyleClass<TypeStyle>[], selected: TypeStyle, defaultNotSelected: StyleClass<TypeStyle>): StyleClass<TypeStyle> {
-	return listStyle.find(item => item.type === selected) ?? defaultNotSelected;
+export function getCustomStyle<TypeStyle>(
+	listStyle: StyleClass<TypeStyle>[],
+	selected: TypeStyle,
+	defaultNotSelected: StyleClass<TypeStyle>
+): StyleClass<TypeStyle> {
+	return listStyle.find((item) => item.type === selected) ?? defaultNotSelected;
 }
 
 /**
@@ -34,7 +38,6 @@ export function cssVariables(node: HTMLElement, variables: Record<string, string
 	};
 }
 
-
 export function cssVariablesSVG(node: SVGElement, variables: Record<string, string>) {
 	setCssVariablesSVG(node, variables);
 
@@ -42,7 +45,7 @@ export function cssVariablesSVG(node: SVGElement, variables: Record<string, stri
 		update(variables: Record<string, string>) {
 			setCssVariablesSVG(node, variables);
 		}
-	}
+	};
 }
 
 function setCssVariablesSVG(node: SVGElement, variables: Record<string, string>) {

@@ -11,4 +11,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .hintrc
 pnpm-lock.yaml
+package-lock.yaml
+*-lock.yaml
 .vscode
