@@ -1,3 +1,4 @@
+import type { ComponentType } from "svelte"
 
 export interface IToast {
     id?: string
@@ -5,6 +6,7 @@ export interface IToast {
     dismissible?: boolean
     timeout?: number
     message: string
+    component?: ComponentType
 }
 
 export interface IToastLoading {
@@ -19,6 +21,7 @@ export interface IToastUpdated {
     timeout?: number
     message: string
     type: TypeToast
+    component?: ComponentType
 }
 
 export interface IToastDefault {
@@ -27,6 +30,7 @@ export interface IToastDefault {
     dismissible: boolean
     timeout: number
     message?: string
+    component?: ComponentType
 }
 
 export type TypeToast = 'info' | 'error' | 'warning' | 'success' | 'loading' | 'custom'

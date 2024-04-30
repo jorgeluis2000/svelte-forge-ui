@@ -7,18 +7,19 @@
 	import SuccessIcon from './SuccessIcon.svelte';
 	import type { TypeAlarm } from './../domains/types/TypeAlarm.type';
 	export let type: TypeAlarm = 'info';
+	export let className = '';
 </script>
 
 {#if type === 'success'}
-	<SuccessIcon />
+	<SuccessIcon {className} />
 {:else if type === 'error'}
-	<ErrorIcon />
+	<ErrorIcon {className} />
 {:else if type === 'loading'}
-	<LoadingIcon />
+	<LoadingIcon {className} />
 {:else if type === 'warning'}
-	<WarningIcon />
+	<WarningIcon {className} />
 {:else if type === 'time'}
-	<TimeSandIcon />
+	<TimeSandIcon {className} />
 {:else}
-	<InfoIcon />
+	<InfoIcon {className} />
 {/if}

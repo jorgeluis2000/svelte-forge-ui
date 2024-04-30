@@ -7,12 +7,12 @@
 	import InfoIcon from '$lib/icons/InfoIcon.svelte';
 	import CloseIcon from '$lib/icons/CloseIcon.svelte';
 	import LoadingIcon from '$lib/icons/LoadingIcon.svelte';
-	import type { TypeToast } from '$lib/domains/interfaces/Toast.interface';
 	import WarningIcon from '$lib/icons/WarningIcon.svelte';
 	import { cssVariables, getCustomStyle } from '$lib/functions/Styles.functions';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
 	import { COLOR_ALARM_STYLE, SIZE_STYLE } from '$lib/constants/Styles.constants';
 	import { DEFAULT_ALARM, DEFAULT_SIZE } from '$lib/constants/DefaultStyles.constants';
+	import type { TypeToast } from '$lib/domains/interfaces/Toast.interface';
 	import type { GeneralSize } from '$lib/domains/types/Sizes.type';
 
 	const dispatch = createEventDispatcher();
@@ -85,7 +85,15 @@
 			<InfoIcon className={styleSizeIcon} />
 		</div>
 	{:else}
-		<slot name="icon"></slot>
+		<div
+			use:cssVariables={{
+				colorIconText,
+				colorIconBg
+			}}
+			class="container-icon"
+		>
+			<slot name="icon"></slot>
+		</div>
 	{/if}
 
 	<div class="content-message">
@@ -101,7 +109,7 @@
 
 <style lang="postcss">
 	.container-toast {
-		@apply flex transition-all duration-300 w-full h-full p-5 bg-gray-50 shadow-md rounded-md cursor-pointer hover:shadow-lg;
+		@apply flex transition-all duration-300 w-full h-full p-5 bg-white shadow-md rounded-md cursor-pointer hover:shadow-lg;
 	}
 
 	.button-close-toast {
