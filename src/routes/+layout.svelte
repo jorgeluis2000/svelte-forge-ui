@@ -13,7 +13,7 @@
 	<span>/</span>
 	<a class="move-pages" href="/toasts">Toasts</a>
 </section>
-<section class="m-5 space-y-10">
+<section class="m-5 w-full space-y-10 min-h-screen">
 	<slot />
 </section>
 
