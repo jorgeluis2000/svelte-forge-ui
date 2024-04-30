@@ -13,8 +13,11 @@
 				type={toast.type ?? 'error'}
 				dismissible={toast.dismissible}
 				{sizeIcon}
-				on:dismiss={() => dismissToast(toast.id ?? '')}>{@html toast.message ?? ''}</Toast
+				on:dismiss={() => dismissToast(toast.id ?? '')}
 			>
+				<svelte:component this={toast.component} slot="icon"></svelte:component>
+				{@html toast.message ?? ''}
+			</Toast>
 		{/each}
 	</section>
 {/if}

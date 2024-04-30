@@ -31,20 +31,24 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<button
-	type="button"
-	use:cssVariables={{
-		color: colorUseCss,
-		textColor: colorText
-	}}
-	class={`btn ${isFilled ? 'filled' : ''} ${styleRoundedStyle} ${styleTextSize} ${className}`}
-	on:click={(event) => dispatch('click', event)}
->
-	<div class={`${thereIsIcon ? 'btn-icon' : 'hidden'} ${styleSizeIcon}`}>
-		<slot name="icon" />
-	</div>
-	<slot />
-</button>
+<section class="container">
+	<button
+		type="button"
+		use:cssVariables={{
+			color: colorUseCss,
+			textColor: colorText
+		}}
+		class={`btn ${thereIsIcon ? 'responsive' : ''} ${isFilled ? 'filled' : ''} ${styleRoundedStyle} ${styleTextSize} ${className}`}
+		on:click={(event) => dispatch('click', event)}
+	>
+		<div class={`${thereIsIcon ? 'btn-icon' : 'hidden'} ${styleSizeIcon}`}>
+			<slot name="icon" />
+		</div>
+		<div class="text">
+			<slot />
+		</div>
+	</button>
+</section>
 
 <style lang="postcss">
 	.btn {
@@ -54,14 +58,25 @@
 		transition-duration: 300ms;
 		color: var(--textColor);
 		border-color: var(--color);
-		@apply px-4 py-2 border-2 justify-center items-center space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
+		@apply px-4 py-2 border-2 justify-center items-center w-full space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
 	}
 
 	.btn-icon {
-		@apply block md:hidden lg:block;
+		@apply block;
 	}
 
 	.btn.filled {
 		background-color: var(--color);
+	}
+
+	@container container (max-width: 18rem) {
+		.btn.responsive > .text {
+			@apply hidden;
+		}
+	}
+
+	.container {
+		container-type: inline-size;
+		container-name: container;
 	}
 </style>
