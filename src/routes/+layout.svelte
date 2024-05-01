@@ -12,8 +12,10 @@
 	<a class="move-pages" href="/textarea">TextAreas</a>
 	<span>/</span>
 	<a class="move-pages" href="/toasts">Toasts</a>
+	<span>/</span>
+	<a class="move-pages" href="/buttons">Buttons</a>
 </section>
-<section class="m-5 w-full space-y-10 min-h-screen">
+<section class="w-full space-y-10 min-h-screen px-2 py-px">
 	<slot />
 </section>
 
