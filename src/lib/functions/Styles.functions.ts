@@ -1,3 +1,4 @@
+import type { TypeButton } from '$lib/domains/types/TypeButton.type';
 import type { StyleClass } from '../domains/types/Style.type';
 
 /**
@@ -68,4 +69,9 @@ function setCssVariables(node: HTMLElement, variables: Record<string, string>) {
 
 export function setTypeAction(node: HTMLInputElement, typeInput: string) {
 	node.type = typeInput;
+}
+
+
+export function setTypeActionButton(node: HTMLButtonElement, typeButton: TypeButton) {
+	node.type = typeButton;
 }
