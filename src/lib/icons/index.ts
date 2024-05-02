@@ -8,7 +8,9 @@ import SuccessIcon from './SuccessIcon.svelte';
 import TimeSandIcon from './TimeSandIcon.svelte';
 import WarningIcon from './WarningIcon.svelte';
 import IconsAlarm from './IconsAlarm.svelte';
-
+import ConfigurationColorIcon from './ConfigurationColorIcon.svelte';
+import RobotColorIcon from './RobotColorIcon.svelte';
+import ArrowDownColor from './ArrowDownColor.svelte';
 export {
 	TwoArrows,
 	XMark,
@@ -19,5 +21,8 @@ export {
 	SuccessIcon,
 	TimeSandIcon,
 	WarningIcon,
-	IconsAlarm
+	IconsAlarm,
+	ConfigurationColorIcon,
+	RobotColorIcon,
+	ArrowDownColor
 };
