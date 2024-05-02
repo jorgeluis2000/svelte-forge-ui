@@ -13,6 +13,7 @@
 	export let useCss: boolean = false;
 
 	const listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	const color300 = useCss ? `var(--${theme}-300)` : listColors['300'];
 	const color500 = useCss ? `var(--${theme}-500)` : listColors['500'];
 	const color600 = useCss ? `var(--${theme}-600)` : listColors['600'];
 	const colorUseCss: string = isFilled
@@ -35,6 +36,7 @@
 
 <aside
 	use:cssVariables={{
+		color300,
 		color: colorUseCss,
 		textColor,
 		colorUseCssHover,
@@ -54,9 +56,7 @@
 		</article>
 	</section>
 	<nav class="transition-all duration-500">
-		<ul class="navbar">
-			<slot name="body"></slot>
-		</ul>
+		<slot name="body"></slot>
 	</nav>
 	<footer class="flex flex-col sticky top-[100vh] w-full mt-5 gap-y-2">
 		<slot name="footer"></slot>
