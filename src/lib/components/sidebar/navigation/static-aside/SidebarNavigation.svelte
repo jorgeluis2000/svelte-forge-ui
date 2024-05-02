@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { DEFAULT_COLOR_HEX, DEFAULT_THEME } from '$lib/constants/DefaultStyles.constants';
-	import type { GeneralSize, RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
 	import { cssVariables } from '$lib/functions/Styles.functions';
-	import SuccessIcon from '$lib/icons/SuccessIcon.svelte';
+	import { SuccessIcon } from '$lib/icons';
 
 	export let openSidebar = false;
 	export let responsive: boolean = false;
@@ -13,9 +12,11 @@
 	export let useCss: boolean = false;
 
 	const listColors = transformListToObject(generateColorScale(colorHex), colorHex);
+	const color100 = useCss ? `var(--${theme}-100)` : listColors['100'];
 	const color300 = useCss ? `var(--${theme}-300)` : listColors['300'];
 	const color500 = useCss ? `var(--${theme}-500)` : listColors['500'];
 	const color600 = useCss ? `var(--${theme}-600)` : listColors['600'];
+	const color700 = useCss ? `var(--${theme}-700)` : listColors['700'];
 	const colorUseCss: string = isFilled
 		? useCss
 			? `var(--${theme}-500)`
@@ -37,6 +38,8 @@
 <aside
 	use:cssVariables={{
 		color300,
+		color700,
+		color500,
 		color: colorUseCss,
 		textColor,
 		colorUseCssHover,
@@ -58,9 +61,7 @@
 	<nav class="transition-all duration-500">
 		<slot name="body"></slot>
 	</nav>
-	<footer class="flex flex-col sticky top-[100vh] w-full mt-5 gap-y-2">
-		<slot name="footer"></slot>
-	</footer>
+	<slot name="footer"></slot>
 </aside>
 
 <style lang="postcss">
@@ -72,12 +73,13 @@
 	.container.active {
 		@apply w-[16.5rem];
 	}
-
 	.container.desactive {
 		@apply w-24;
 	}
 	.scroll-sidebar {
-		@apply scrollbar-none scrollbar-thumb-primary-700 scrollbar-track-primary-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full;
+		--scrollbar-thumb: var(--color700);
+		--scrollbar-track: var(--color500);
+		@apply scrollbar-none scrollbar-thumb-rounded-full scrollbar-track-rounded-full;
 	}
 	.container-data {
 		container-type: inline-size;
@@ -95,19 +97,9 @@
 	.navbar {
 		@apply transition-all duration-500 flex flex-col items-center p-0 m-0 gap-y-2;
 	}
-
-	.inactive {
-		@apply hidden w-0 opacity-0;
-	}
-
-	.activate {
-		@apply block w-auto opacity-100;
-	}
-
 	.container-user {
 		@apply transition-all duration-500 flex mb-6 mt-2 items-center justify-center;
 	}
-
 	.container-logo {
 		color: var(--colorLogo);
 		background-color: var(--colorBgLogo);
@@ -115,9 +107,5 @@
 			--tw-ring-color: var(--colorUseCssHover);
 		}
 		@apply transition-all duration-500 flex items-center justify-center min-w-[3rem] size-12 mx-4 mr-2 my-6 mt-10 overflow-hidden rounded-full font-semibold hover:ring-1;
-	}
-
-	.copyright {
-		@apply text-xs text-gray-200 text-center mx-5;
 	}
 </style>

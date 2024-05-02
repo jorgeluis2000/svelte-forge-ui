@@ -15,7 +15,7 @@ import type { TextSize, RoundedSize, GeneralSize } from './domains/types/Sizes.t
 import type { StyleClass } from './domains/types/Style.type';
 import type { ThemeColor } from './domains/types/ThemeColor.type';
 import type { TypeAlarm } from './domains/types/TypeAlarm.type';
-
+import type { ItemList, SubItems, GroupItemSubMenuTabList, ItemSubMenuTabList, ItemTabList } from './domains/types/SidebarNavigation.type';
 export type {
 	ItemSelect,
 	GroupItemSelect,
@@ -27,7 +27,12 @@ export type {
 	IntoCompany,
 	StyleClass,
 	ThemeColor,
-	TypeAlarm
+	TypeAlarm,
+	ItemList,
+	SubItems,
+	GroupItemSubMenuTabList,
+	ItemSubMenuTabList,
+	ItemTabList
 };
 export {
 	SeoGenerate,
