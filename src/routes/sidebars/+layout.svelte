@@ -3,6 +3,8 @@
 	import SeoGenerate from '$lib/components/seo/SEOGenerate.svelte';
 	import { SidebarNavigation } from '$lib/components/sidebar';
 	import DataUserGeneral from '$lib/components/sidebar/navigation/DataUserGeneral.svelte';
+	import ItemSidebarNavigation from '$lib/components/sidebar/navigation/ItemSidebarNavigation.svelte';
+	import SidebarContainerBodyNavigation from '$lib/components/sidebar/navigation/SidebarContainerBodyNavigation.svelte';
 	const companyInto = { name: 'Jorge Luis Güiza Granobles', address: [''], telephone: [''] };
 	let actionSidebar = false;
 </script>
@@ -14,6 +16,10 @@
 		userRole="Administrador"
 		slot="info"
 	></DataUserGeneral>
+	<SidebarContainerBodyNavigation slot="body">
+		<ItemSidebarNavigation nameItem="Hello" bind:openSidebar={actionSidebar}
+		></ItemSidebarNavigation>
+	</SidebarContainerBodyNavigation>
 </SidebarNavigation>
 
 <svelte:head>
