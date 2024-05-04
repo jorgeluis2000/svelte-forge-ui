@@ -5,8 +5,8 @@
 
 	let dispatcher = createEventDispatcher();
 
-	function validMatch(into: string) {
-		return into.startsWith(location.pathname);
+	function validMatch(path: string) {
+		return path.startsWith(location.pathname);
 	}
 
 	function eventClick() {
