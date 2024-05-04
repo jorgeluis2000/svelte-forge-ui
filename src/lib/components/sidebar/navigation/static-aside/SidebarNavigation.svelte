@@ -37,6 +37,7 @@
 
 <aside
 	use:cssVariables={{
+		color100,
 		color300,
 		color700,
 		color500,
@@ -46,7 +47,7 @@
 		colorLogo,
 		colorBgLogo
 	}}
-	class={`${responsive ? 'hidden lg:block' : 'block'} scroll-sidebar container ${openSidebar ? 'active' : 'desactive'} `}
+	class={`${responsive ? 'responsive' : ''} scroll-sidebar container ${openSidebar ? 'active' : 'desactive'} `}
 >
 	<section class="container-user container-data">
 		<button type="button" on:click={eventTurnSidebar} class="container-logo">
@@ -69,6 +70,9 @@
 		background-color: var(--color);
 		color: var(--textColor);
 		@apply fixed h-screen min-w-[6rem] w-24 shadow-md overflow-hidden overflow-y-auto top-0 rounded-r-md transition-all duration-500 ease-in-out z-50;
+	}
+	.container.responsive {
+		@apply hidden lg:block;
 	}
 	.container.active {
 		@apply w-[16.5rem];

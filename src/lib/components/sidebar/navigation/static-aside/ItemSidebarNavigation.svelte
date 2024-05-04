@@ -12,11 +12,12 @@
 
 	function validMatch(path: string) {
 		try {
-			return location.pathname.startsWith(path);
+			return path.startsWith(location.pathname);
 		} catch (error) {
 			return false;
 		}
 	}
+
 	function eventTurnList() {
 		openList = !openList;
 		openSidebar = true;
