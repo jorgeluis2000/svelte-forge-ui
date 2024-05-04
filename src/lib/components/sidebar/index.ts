@@ -6,6 +6,24 @@ import SubItemsSidebarNavigation from "./navigation/static-aside/SubItemsSidebar
 import SidebarContainerSubItemsNavigation from "./navigation/static-aside/SidebarContainerSubItemsNavigation.svelte";
 import SidebarContainerFooterNavigation from "./navigation/static-aside/SidebarContainerFooterNavigation.svelte";
 import CopyRightSidebarNavigation from "./navigation/static-aside/CopyRightSidebarNavigation.svelte";
+import ItemTabBottomNavigation from "./navigation/static-bottom/ItemTabBottomNavigation.svelte";
+import TabBottomNavigation from "./navigation/static-bottom/TabBottomNavigation.svelte";
+import TabBottomContainerSubItemsNavigation from "./navigation/static-bottom/TabBottomContainerSubItemsNavigation.svelte";
+import SubItemTabBottomNavigation from "./navigation/static-bottom/SubItemTabBottomNavigation.svelte";
+import TabBottomContainerGroupSubItemNavigation from "./navigation/static-bottom/TabBottomContainerGroupSubItemNavigation.svelte";
 
-
-export { SidebarNavigation, DataUserGeneral, ItemSidebarNavigation, SidebarContainerBodyNavigation, SubItemsSidebarNavigation, SidebarContainerSubItemsNavigation, SidebarContainerFooterNavigation, CopyRightSidebarNavigation }
+export {
+    SidebarNavigation,
+    DataUserGeneral,
+    ItemSidebarNavigation,
+    SidebarContainerBodyNavigation,
+    SubItemsSidebarNavigation,
+    SidebarContainerSubItemsNavigation,
+    SidebarContainerFooterNavigation,
+    CopyRightSidebarNavigation,
+    ItemTabBottomNavigation,
+    TabBottomNavigation,
+    TabBottomContainerSubItemsNavigation,
+    SubItemTabBottomNavigation,
+    TabBottomContainerGroupSubItemNavigation
+}

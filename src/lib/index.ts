@@ -16,6 +16,8 @@ import type { StyleClass } from './domains/types/Style.type';
 import type { ThemeColor } from './domains/types/ThemeColor.type';
 import type { TypeAlarm } from './domains/types/TypeAlarm.type';
 import type { ItemList, SubItems, GroupItemSubMenuTabList, ItemSubMenuTabList, ItemTabList } from './domains/types/SidebarNavigation.type';
+import type { TypeItem, TypeButton } from './domains/types/TypeButton.type';
+
 export type {
 	ItemSelect,
 	GroupItemSelect,
@@ -32,7 +34,9 @@ export type {
 	SubItems,
 	GroupItemSubMenuTabList,
 	ItemSubMenuTabList,
-	ItemTabList
+	ItemTabList,
+	TypeItem,
+	TypeButton
 };
 export {
 	SeoGenerate,

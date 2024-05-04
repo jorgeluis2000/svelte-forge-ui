@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<section class="inline-block w-full m-5 space-x-3 space-y-10">
+<section class="block w-full m-5 space-x-3 space-y-10">
 	<a class="move-pages" href="/">Home</a>
 	<span>/</span>
 	<a class="move-pages" href="/modals">Modales</a>

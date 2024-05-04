@@ -8,11 +8,16 @@
 	import DataUserGeneral from '$lib/components/sidebar/navigation/static-aside/DataUserGeneral.svelte';
 	import ItemSidebarNavigation from '$lib/components/sidebar/navigation/static-aside/ItemSidebarNavigation.svelte';
 	import SidebarContainerBodyNavigation from '$lib/components/sidebar/navigation/static-aside/SidebarContainerBodyNavigation.svelte';
-	import { RobotColorIcon, ConfigurationColorIcon, SuccessIcon } from '$lib/icons';
-	import SidebarContainerSubItemsNavigation from '$lib/components/sidebar/navigation/static-aside/SidebarContainerSubItemsNavigation.svelte';
-	import SidebarContainerFooterNavigation from '$lib/components/sidebar/navigation/static-aside/SidebarContainerFooterNavigation.svelte';
-	import TabBottomNavigation from '$lib/components/sidebar/navigation/static-bottom/TabBottomNavigation.svelte';
-	import ItemTabBottomNavigation from '$lib/components/sidebar/navigation/static-bottom/ItemTabBottomNavigation.svelte';
+	import { RobotColorIcon, ConfigurationColorIcon, SuccessIcon, ErrorIcon } from '$lib/icons';
+	import {
+		TabBottomNavigation,
+		ItemTabBottomNavigation,
+		SidebarContainerSubItemsNavigation,
+		SidebarContainerFooterNavigation,
+		TabBottomContainerSubItemsNavigation,
+		SubItemTabBottomNavigation,
+		TabBottomContainerGroupSubItemNavigation
+	} from '$lib/components/sidebar';
 
 	const companyInto = { name: 'Jorge Luis Güiza Granobles', address: [''], telephone: [''] };
 	let actionSidebar = false;
@@ -35,6 +40,7 @@
 			subItems: []
 		}
 	];
+
 	let testTabsList: ItemTabList[] = [
 		{
 			color: 'red',
@@ -43,7 +49,54 @@
 			icon: SuccessIcon,
 			opened: false,
 			items: [],
-			nameItem: ''
+			nameItem: 'Hello World'
+		},
+		{
+			color: 'red',
+			href: '/errors',
+			isList: true,
+			icon: RobotColorIcon,
+			opened: false,
+			items: [],
+			nameItem: 'Sidebars'
+		},
+		{
+			color: 'red',
+			href: '/sidebars',
+			isList: true,
+			icon: ErrorIcon,
+			opened: false,
+			items: [
+				{
+					title: 'Components actions',
+					items: [
+						{
+							color: '#179F67',
+							href: '/buttons',
+							text: 'buttons',
+							icon: RobotColorIcon
+						}
+					]
+				},
+				{
+					title: 'Components Inputs',
+					items: [
+						{
+							color: '#5DADE2',
+							href: '/inputs',
+							text: 'Inputs',
+							icon: RobotColorIcon
+						},
+						{
+							color: '#F1C40F',
+							href: '/textarea',
+							text: 'Text Areas',
+							icon: RobotColorIcon
+						}
+					]
+				}
+			],
+			nameItem: 'Sidebars'
 		}
 	];
 </script>
@@ -81,12 +134,27 @@
 		/>
 	</SidebarContainerFooterNavigation>
 </SidebarNavigation>
-
-<TabBottomNavigation>
+<!-- Encabezado del Tab Navigation -->
+<TabBottomNavigation responsive>
 	{#each testTabsList as { color, href, icon, isList, items, nameItem, opened }}
-		<ItemTabBottomNavigation {color} {href} {isList} {items} {opened} name={nameItem}>
+		<!-- Botones del tab navigation -->
+		<ItemTabBottomNavigation {color} {href} {isList} bind:opened name={nameItem}>
 			<svelte:component this={icon} slot="icon"></svelte:component>
 		</ItemTabBottomNavigation>
+
+		<!-- Contenedor de los sub items del tab navigation -->
+		<TabBottomContainerSubItemsNavigation bind:opened>
+			{#each items as { title, items: subItems }}
+				<!-- Grupo de sub items del tab navigation -->
+				<TabBottomContainerGroupSubItemNavigation {title}>
+					{#each subItems as item}
+						<SubItemTabBottomNavigation colorHex={item.color} name={item.text} href={item.href}>
+							<svelte:component this={item.icon} slot="icon"></svelte:component>
+						</SubItemTabBottomNavigation>
+					{/each}
+				</TabBottomContainerGroupSubItemNavigation>
+			{/each}
+		</TabBottomContainerSubItemsNavigation>
 	{/each}
 </TabBottomNavigation>
 <svelte:head>
