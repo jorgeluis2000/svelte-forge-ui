@@ -4,7 +4,7 @@
 	import type { ItemList, ItemTabList } from '$lib';
 	import { ButtonAction } from '$lib/components/buttons';
 	import SeoGenerate from '$lib/components/seo/SEOGenerate.svelte';
-	import { SidebarNavigation } from '$lib/components/sidebar';
+	import { Sidebar, SidebarNavigation } from '$lib/components/sidebar';
 	import DataUserGeneral from '$lib/components/sidebar/navigation/static-aside/DataUserGeneral.svelte';
 	import ItemSidebarNavigation from '$lib/components/sidebar/navigation/static-aside/ItemSidebarNavigation.svelte';
 	import SidebarContainerBodyNavigation from '$lib/components/sidebar/navigation/static-aside/SidebarContainerBodyNavigation.svelte';
@@ -16,11 +16,13 @@
 		SidebarContainerFooterNavigation,
 		TabBottomContainerSubItemsNavigation,
 		SubItemTabBottomNavigation,
-		TabBottomContainerGroupSubItemNavigation
+		TabBottomContainerGroupSubItemNavigation,
+		ContainerReactiveSidebarNavigation
 	} from '$lib/components/sidebar';
 
 	const companyInto = { name: 'Jorge Luis Güiza Granobles', address: [''], telephone: [''] };
 	let actionSidebar = false;
+	let actionSidebarPos = false;
 
 	let testItemsList: ItemList[] = [
 		{
@@ -101,62 +103,6 @@
 	];
 </script>
 
-<SidebarNavigation bind:openSidebar={actionSidebar} responsive isFilled>
-	<DataUserGeneral
-		slot="info"
-		nameCompany="Panadería"
-		nameUser="Jorge Luis G."
-		userRole="Administrador"
-	></DataUserGeneral>
-	<SidebarContainerBodyNavigation slot="body">
-		{#each testItemsList as { nameItem, icon, isList, opened, subItems, href }}
-			<ItemSidebarNavigation
-				{nameItem}
-				bind:openSidebar={actionSidebar}
-				bind:openList={opened}
-				{href}
-				{isList}
-			>
-				<svelte:component this={icon} slot="icon"></svelte:component>
-				<SidebarContainerSubItemsNavigation slot="sub-items">
-					{#each subItems as { href, text }}
-						<SubItemsSidebarNavigation {href}>{@html text}</SubItemsSidebarNavigation>
-					{/each}
-				</SidebarContainerSubItemsNavigation>
-			</ItemSidebarNavigation>
-		{/each}
-	</SidebarContainerBodyNavigation>
-	<SidebarContainerFooterNavigation slot="footer">
-		<CopyRightSidebarNavigation
-			company="Jorge Luis Güiza"
-			year="2024"
-			bind:openSidebar={actionSidebar}
-		/>
-	</SidebarContainerFooterNavigation>
-</SidebarNavigation>
-<!-- Encabezado del Tab Navigation -->
-<TabBottomNavigation responsive>
-	{#each testTabsList as { color, href, icon, isList, items, nameItem, opened }}
-		<!-- Botones del tab navigation -->
-		<ItemTabBottomNavigation {color} {href} {isList} bind:opened name={nameItem}>
-			<svelte:component this={icon} slot="icon"></svelte:component>
-		</ItemTabBottomNavigation>
-
-		<!-- Contenedor de los sub items del tab navigation -->
-		<TabBottomContainerSubItemsNavigation bind:opened>
-			{#each items as { title, items: subItems }}
-				<!-- Grupo de sub items del tab navigation -->
-				<TabBottomContainerGroupSubItemNavigation {title}>
-					{#each subItems as item}
-						<SubItemTabBottomNavigation colorHex={item.color} name={item.text} href={item.href}>
-							<svelte:component this={item.icon} slot="icon"></svelte:component>
-						</SubItemTabBottomNavigation>
-					{/each}
-				</TabBottomContainerGroupSubItemNavigation>
-			{/each}
-		</TabBottomContainerSubItemsNavigation>
-	{/each}
-</TabBottomNavigation>
 <svelte:head>
 	<SeoGenerate
 		title="Examples Text Sidebars"
@@ -171,19 +117,95 @@
 		language="en"
 	/>
 </svelte:head>
-<slot />
 
-<div class="flex w-full" id="textareas">
-	<h2 class="text-xl font-semibold">Sidebars Section</h2>
-</div>
+<section class="relative">
+	<SidebarNavigation bind:openSidebar={actionSidebar} responsive isFilled>
+		<DataUserGeneral
+			slot="info"
+			nameCompany="Panadería"
+			nameUser="Jorge Luis G."
+			userRole="Administrador"
+		></DataUserGeneral>
+		<SidebarContainerBodyNavigation slot="body">
+			{#each testItemsList as { nameItem, icon, isList, opened, subItems, href }}
+				<ItemSidebarNavigation
+					{nameItem}
+					bind:openSidebar={actionSidebar}
+					bind:openList={opened}
+					{href}
+					{isList}
+				>
+					<svelte:component this={icon} slot="icon"></svelte:component>
+					<SidebarContainerSubItemsNavigation slot="sub-items">
+						{#each subItems as { href, text }}
+							<SubItemsSidebarNavigation {href}>{@html text}</SubItemsSidebarNavigation>
+						{/each}
+					</SidebarContainerSubItemsNavigation>
+				</ItemSidebarNavigation>
+			{/each}
+		</SidebarContainerBodyNavigation>
+		<SidebarContainerFooterNavigation slot="footer">
+			<CopyRightSidebarNavigation
+				company="Jorge Luis Güiza"
+				year="2024"
+				bind:openSidebar={actionSidebar}
+			/>
+		</SidebarContainerFooterNavigation>
+	</SidebarNavigation>
+	<Sidebar bind:openSidebar={actionSidebarPos}>Hello World</Sidebar>
+	<!-- Encabezado del Tab Navigation -->
+	<TabBottomNavigation responsive>
+		{#each testTabsList as { color, href, icon, isList, items, nameItem, opened }}
+			<!-- Botones del tab navigation -->
+			<ItemTabBottomNavigation {color} {href} {isList} bind:opened name={nameItem}>
+				<svelte:component this={icon} slot="icon"></svelte:component>
+			</ItemTabBottomNavigation>
 
-<section class="flex w-full">
-	<ButtonAction
-		on:click={() => (actionSidebar = !actionSidebar)}
-		type="button"
-		rounded="md"
-		textSize="sm"
-	>
-		<span>Open Sidebar</span>
-	</ButtonAction>
+			<!-- Contenedor de los sub items del tab navigation -->
+			<TabBottomContainerSubItemsNavigation bind:opened>
+				{#each items as { title, items: subItems }}
+					<!-- Grupo de sub items del tab navigation -->
+					<TabBottomContainerGroupSubItemNavigation {title}>
+						{#each subItems as item}
+							<SubItemTabBottomNavigation colorHex={item.color} name={item.text} href={item.href}>
+								<svelte:component this={item.icon} slot="icon"></svelte:component>
+							</SubItemTabBottomNavigation>
+						{/each}
+					</TabBottomContainerGroupSubItemNavigation>
+				{/each}
+			</TabBottomContainerSubItemsNavigation>
+		{/each}
+	</TabBottomNavigation>
 </section>
+
+<ContainerReactiveSidebarNavigation>
+	<div class="container-title" id="textareas">
+		<h2 class="text-xl font-semibold">Sidebars Section</h2>
+	</div>
+
+	<slot />
+	<section class="w-full space-y-5">
+		<ButtonAction
+			on:click={() => (actionSidebar = !actionSidebar)}
+			type="button"
+			rounded="md"
+			textSize="sm"
+		>
+			<span>Open Sidebar</span>
+		</ButtonAction>
+		<ButtonAction
+			on:click={() => (actionSidebarPos = !actionSidebarPos)}
+			type="button"
+			rounded="md"
+			textSize="sm"
+		>
+			<span>Open Sidebar Right</span>
+		</ButtonAction>
+	</section>
+</ContainerReactiveSidebarNavigation>
+
+<style lang="postcss">
+	.container-title {
+		@apply flex w-full;
+	}
+</style>

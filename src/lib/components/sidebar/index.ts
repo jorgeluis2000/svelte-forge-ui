@@ -11,6 +11,8 @@ import TabBottomNavigation from "./navigation/static-bottom/TabBottomNavigation.
 import TabBottomContainerSubItemsNavigation from "./navigation/static-bottom/TabBottomContainerSubItemsNavigation.svelte";
 import SubItemTabBottomNavigation from "./navigation/static-bottom/SubItemTabBottomNavigation.svelte";
 import TabBottomContainerGroupSubItemNavigation from "./navigation/static-bottom/TabBottomContainerGroupSubItemNavigation.svelte";
+import Sidebar from "./aside/Sidebar.svelte";
+import ContainerReactiveSidebarNavigation from "./navigation/static-aside/ContainerReactiveSidebarNavigation.svelte";
 
 export {
     SidebarNavigation,
@@ -25,5 +27,7 @@ export {
     TabBottomNavigation,
     TabBottomContainerSubItemsNavigation,
     SubItemTabBottomNavigation,
-    TabBottomContainerGroupSubItemNavigation
+    TabBottomContainerGroupSubItemNavigation,
+    Sidebar,
+    ContainerReactiveSidebarNavigation
 }
