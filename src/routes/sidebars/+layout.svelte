@@ -118,7 +118,7 @@
 	/>
 </svelte:head>
 
-<section class="relative">
+<section class="">
 	<SidebarNavigation bind:openSidebar={actionSidebar} responsive isFilled>
 		<DataUserGeneral
 			slot="info"
@@ -152,7 +152,7 @@
 			/>
 		</SidebarContainerFooterNavigation>
 	</SidebarNavigation>
-	<Sidebar bind:openSidebar={actionSidebarPos}>Hello World</Sidebar>
+	<Sidebar position="left" bind:openSidebar={actionSidebarPos}>Hello World</Sidebar>
 	<!-- Encabezado del Tab Navigation -->
 	<TabBottomNavigation responsive>
 		{#each testTabsList as { color, href, icon, isList, items, nameItem, opened }}
