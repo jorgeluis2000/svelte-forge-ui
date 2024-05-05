@@ -69,7 +69,7 @@
 	.container {
 		background-color: var(--color);
 		color: var(--textColor);
-		@apply fixed h-screen min-w-[6rem] w-24 shadow-md overflow-hidden overflow-y-auto top-0 rounded-r-md transition-all duration-500 ease-in-out z-50;
+		@apply fixed h-screen min-w-[6rem] w-24 shadow-md overflow-x-hidden overflow-y-auto top-0 rounded-r-md transition-all duration-500 ease-in-out z-50;
 	}
 	.container.responsive {
 		@apply hidden lg:block;
