@@ -51,6 +51,10 @@
 			"types": "./dist/icons/index.d.ts",
 			"default": "./dist/icons/index.js"
 		},
+		"./functions": {
+			"types": "./dist/functions/index.d.ts",
+			"default": "./dist/functions/index.js"
+		},
 		"./inputs": {
 			"types": "./dist/components/inputs/index.d.ts",
 			"default": "./dist/components/inputs/index.js"
