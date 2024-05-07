@@ -61,6 +61,10 @@
 
 <ContainerToast sizeIcon="sm"></ContainerToast>
 
+<div class="flex w-full" id="textareas">
+	<h2 class="text-xl font-semibold">Toasts Section</h2>
+</div>
+
 <section class="flex justify-center items-end gap-3">
 	<ButtonAction rounded="md" textSize="sm" thereIsIcon on:click={eventNewToast}>
 		<div slot="icon">

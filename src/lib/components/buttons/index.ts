@@ -1,3 +1,3 @@
 import ButtonAction from './ButtonAction.svelte';
-
-export { ButtonAction };
+import ButtonCircleIcon from './ButtonCircleIcon.svelte';
+export { ButtonAction, ButtonCircleIcon };

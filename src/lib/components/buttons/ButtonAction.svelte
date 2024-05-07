@@ -1,16 +1,21 @@
 <script lang="ts">
-	import { ROUNDED_STYLE, SIZE_STYLE, TEXT_SIZE_STYLE } from './../../constants/Styles.constants';
+	import { createEventDispatcher } from 'svelte';
+	import { ROUNDED_STYLE, SIZE_STYLE, TEXT_SIZE_STYLE } from '$lib/constants/Styles.constants';
 	import {
 		DEFAULT_COLOR_HEX,
 		DEFAULT_ROUNDED_SIZE,
 		DEFAULT_SIZE,
 		DEFAULT_TEXT_SIZE,
 		DEFAULT_THEME
-	} from '../../constants/DefaultStyles.constants';
-	import { createEventDispatcher, onMount } from 'svelte';
-	import { cssVariables, getCustomStyle } from '../../functions/Styles.functions';
-	import { generateColorScale, transformListToObject } from '../../functions/Colors.functions';
-	import type { GeneralSize, RoundedSize, TextSize } from '../../domains/types/Sizes.type';
+	} from '$lib/constants/DefaultStyles.constants';
+	import {
+		cssVariables,
+		getCustomStyle,
+		setTypeActionButton
+	} from '$lib/functions/Styles.functions';
+	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import type { GeneralSize, RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
+	import type { TypeButton } from '$lib/domains/types/TypeButton.type';
 
 	export let theme: string = DEFAULT_THEME;
 	export let isFilled: boolean = false;
@@ -21,6 +26,7 @@
 	export let thereIsIcon: boolean = false;
 	export let colorHex: string = DEFAULT_COLOR_HEX;
 	export let useCss: boolean = false;
+	export let type: TypeButton = 'button';
 
 	const listColors = transformListToObject(generateColorScale(colorHex), colorHex);
 	const colorUseCss: string = useCss ? `var(--${theme}-500)` : listColors['500'];
@@ -33,7 +39,7 @@
 
 <section class="container">
 	<button
-		type="button"
+		use:setTypeActionButton={type}
 		use:cssVariables={{
 			color: colorUseCss,
 			textColor: colorText
@@ -52,13 +58,12 @@
 
 <style lang="postcss">
 	.btn {
-		display: flex;
 		transition-property: all;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		transition-duration: 300ms;
 		color: var(--textColor);
 		border-color: var(--color);
-		@apply px-4 py-2 border-2 justify-center items-center w-full space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
+		@apply flex px-4 py-2 border-2 h-auto justify-center items-center w-full space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
 	}
 
 	.btn-icon {

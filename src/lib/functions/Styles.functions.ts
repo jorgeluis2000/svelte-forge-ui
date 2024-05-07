@@ -1,3 +1,4 @@
+import type { TypeButton } from '$lib/domains/types/TypeButton.type';
 import type { StyleClass } from '../domains/types/Style.type';
 
 /**
@@ -48,7 +49,13 @@ export function cssVariablesSVG(node: SVGElement, variables: Record<string, stri
 	};
 }
 
-function setCssVariablesSVG(node: SVGElement, variables: Record<string, string>) {
+/**
+ * Sets CSS variables on an SVG element.
+ *
+ * @param {SVGElement} node - The SVG element on which CSS variables need to be set.
+ * @param {Record<string, string>} variables - An object containing key-value pairs of CSS variable names and their corresponding values.
+ */
+export function setCssVariablesSVG(node: SVGElement, variables: Record<string, string>) {
 	for (const name in variables) {
 		node.style.setProperty(`--${name}`, variables[name]);
 	}
@@ -60,12 +67,29 @@ function setCssVariablesSVG(node: SVGElement, variables: Record<string, string>)
  * @param {Record<string, string>} variables - An object containing CSS variables as key-value pairs.
  * Keys are the names of the variables and values are the values to be assigned to those variables.
  */
-function setCssVariables(node: HTMLElement, variables: Record<string, string>) {
+export function setCssVariables(node: HTMLElement, variables: Record<string, string>) {
 	for (const name in variables) {
 		node.style.setProperty(`--${name}`, variables[name]);
 	}
 }
 
+/**
+ * Sets the type attribute of an HTML input element.
+ *
+ * @param {HTMLInputElement} node - The HTML input element whose type attribute needs to be set.
+ * @param {string} typeInput - The desired type for the input element.
+ */
 export function setTypeAction(node: HTMLInputElement, typeInput: string) {
 	node.type = typeInput;
+}
+
+
+/**
+ * Sets the type attribute of an HTML button element.
+ *
+ * @param {HTMLButtonElement} node - The HTML button element whose type attribute needs to be set.
+ * @param {TypeButton} typeButton - The desired type for the button element.
+ */
+export function setTypeActionButton(node: HTMLButtonElement, typeButton: TypeButton) {
+	node.type = typeButton;
 }

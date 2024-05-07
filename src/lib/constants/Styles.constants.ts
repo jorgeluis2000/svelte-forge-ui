@@ -39,6 +39,8 @@ export const TEXT_SIZE_STYLE: StyleClass<TextSize>[] = [
 	{ type: '9xl', class: 'text-9xl' }
 ];
 
+
+
 export const COLOR_ALARM_FULL_STYLE: StyleClass<TypeAlarm>[] = [
 	{ type: 'success', class: 'text-green-500 bg-green-100' },
 	{ type: 'error', class: 'text-red-500 bg-red-100' },

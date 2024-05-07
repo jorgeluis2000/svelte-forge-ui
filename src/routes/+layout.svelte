@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<section class="inline-block w-full m-5 space-x-3 space-y-10">
+<section class="block w-full m-5 space-x-3 space-y-10">
 	<a class="move-pages" href="/">Home</a>
 	<span>/</span>
 	<a class="move-pages" href="/modals">Modales</a>
@@ -12,8 +12,12 @@
 	<a class="move-pages" href="/textarea">TextAreas</a>
 	<span>/</span>
 	<a class="move-pages" href="/toasts">Toasts</a>
+	<span>/</span>
+	<a class="move-pages" href="/buttons">Buttons</a>
+	<span>/</span>
+	<a class="move-pages" href="/sidebars">Sidebars</a>
 </section>
-<section class="m-5 w-full space-y-10 min-h-screen">
+<section class="w-full space-y-10 min-h-screen">
 	<slot />
 </section>
 
