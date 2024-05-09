@@ -119,7 +119,7 @@
 			{/if}
 		</button>
 		<button type="button" class="button-arrow" on:click={() => (focusShow = !focusShow)}>
-			<TwoArrows className="size-4" />
+			<TwoArrows className="w-4" />
 		</button>
 	</section>
 	<input type="text" class="sr-only" name={nameInput} id={nameInput} value={showSelected} />

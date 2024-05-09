@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	export let href: string;
 	export let name: string;
 	export let opened: boolean = false;
+	export let href: string = '';
 	export let color: string = '';
-	export let isList: boolean;
+	export let isList: boolean = false;
 	let dispatch = createEventDispatcher();
+
 	function validMatch(path: string) {
 		try {
-			return path.startsWith(location.pathname);
+			const originalPath = window.location.pathname;
+			if (isList) {
+				return originalPath.startsWith(path);
+			} else {
+				return path.startsWith(originalPath);
+			}
 		} catch (error) {
 			return false;
 		}
