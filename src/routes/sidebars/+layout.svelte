@@ -29,16 +29,19 @@
 			opened: false,
 			isList: true,
 			icon: ConfigurationColorIcon,
-			nameItem: 'Hello World 2',
-			href: '/sidebars',
-			subItems: [{ text: 'Sub Hello world', href: '/hello' }]
+			nameItem: 'enlaces',
+			href: '/',
+			subItems: [
+				{ text: 'botones', href: '/buttons' },
+				{ text: 'inputs', href: '/inputs' },
+				{ text: 'sidebars', href: '/sidebars' }
+			]
 		},
 		{
 			opened: false,
-			isList: false,
 			icon: RobotColorIcon,
-			nameItem: 'Hello World',
-			href: '/sidebars',
+			nameItem: 'Modals',
+			href: '/modals',
 			subItems: []
 		}
 	];
@@ -55,7 +58,7 @@
 		},
 		{
 			color: 'red',
-			href: '/errors',
+			href: '/sidebars',
 			isList: true,
 			icon: RobotColorIcon,
 			opened: false,
@@ -64,7 +67,7 @@
 		},
 		{
 			color: 'red',
-			href: '/sidebars',
+			href: '/',
 			isList: true,
 			icon: ErrorIcon,
 			opened: false,
@@ -93,6 +96,12 @@
 							color: '#F1C40F',
 							href: '/textarea',
 							text: 'Text Areas',
+							icon: RobotColorIcon
+						},
+						{
+							color: '#F1C40F',
+							href: '/sidebars',
+							text: 'Sidebars',
 							icon: RobotColorIcon
 						}
 					]
@@ -137,8 +146,8 @@
 				>
 					<svelte:component this={icon} slot="icon"></svelte:component>
 					<SidebarContainerSubItemsNavigation slot="sub-items">
-						{#each subItems as { href, text }}
-							<SubItemsSidebarNavigation {href}>{@html text}</SubItemsSidebarNavigation>
+						{#each subItems as { href, text, type }}
+							<SubItemsSidebarNavigation {type} {href}>{@html text}</SubItemsSidebarNavigation>
 						{/each}
 					</SidebarContainerSubItemsNavigation>
 				</ItemSidebarNavigation>
@@ -167,7 +176,12 @@
 					<!-- Grupo de sub items del tab navigation -->
 					<TabBottomContainerGroupSubItemNavigation {title}>
 						{#each subItems as item}
-							<SubItemTabBottomNavigation colorHex={item.color} name={item.text} href={item.href}>
+							<SubItemTabBottomNavigation
+								type={item.type}
+								colorHex={item.color}
+								name={item.text}
+								href={item.href}
+							>
 								<svelte:component this={item.icon} slot="icon"></svelte:component>
 							</SubItemTabBottomNavigation>
 						{/each}
