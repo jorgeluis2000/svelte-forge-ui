@@ -7,9 +7,9 @@
 	import type { TypeItem } from '$lib/domains/types/TypeButton.type';
 
 	export let type: TypeItem = 'link';
+	export let href: string = '';
 	export let theme: string = DEFAULT_THEME;
 	export let name: string;
-	export let href: string;
 	export let colorHex: string = DEFAULT_COLOR_HEX;
 	export let useCss: boolean = false;
 

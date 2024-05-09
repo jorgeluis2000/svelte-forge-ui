@@ -12,7 +12,13 @@
 
 	function validMatch(path: string) {
 		try {
-			return path.startsWith(location.pathname);
+			const originalPath = window.location.pathname;
+
+			if (isList) {
+				return originalPath.startsWith(path);
+			} else {
+				return path.startsWith(originalPath);
+			}
 		} catch (error) {
 			return false;
 		}
@@ -50,18 +56,14 @@
 	{/if}
 {:else}
 	<li class="item" title={nameItem}>
-		<button
-			type="button"
-			class={`link ${validMatch(href) ? 'active' : ''}`}
-			on:click|preventDefault={eventTurnList}
-		>
+		<a {href} class={`link ${validMatch(href) ? 'active' : ''}`}>
 			<div class="icon">
 				<slot name="icon"><SuccessIcon /></slot>
 			</div>
 			<span class={`transition-opacity duration-200 text ${openSidebar ? '' : 'opacity-0'}`}
 				>{@html nameItem}</span
 			>
-		</button>
+		</a>
 	</li>
 {/if}
 
@@ -92,6 +94,13 @@
 	}
 
 	.item .link.active {
+		color: var(--colorLogo);
+		background-color: var(--colorBgLogo);
+		@apply filter-none;
+	}
+
+	.item .link.active .icon {
+		color: var(--colorBgLogo);
 		@apply filter-none;
 	}
 	.item .link .icon {

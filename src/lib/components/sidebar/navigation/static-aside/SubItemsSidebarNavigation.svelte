@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import type { TypeItem } from '$lib/domains/types/TypeButton.type';
 
 	export let href: string = '';
+	export let type: TypeItem = 'link';
 
 	let dispatcher = createEventDispatcher();
 
@@ -15,13 +17,19 @@
 </script>
 
 <li class="item-list">
-	<button
-		type="button"
-		on:click|preventDefault={eventClick}
-		class={`link-list ${validMatch(href) ? 'selected' : ''}`}
-	>
-		<span class="link-test"><slot></slot></span>
-	</button>
+	{#if type === 'button'}
+		<button
+			type="button"
+			on:click|preventDefault={eventClick}
+			class={`link-list ${validMatch(href) ? 'selected' : ''}`}
+		>
+			<span class="link-test"><slot></slot></span>
+		</button>
+	{:else}
+		<a {href} class={`link-list ${validMatch(href) ? 'selected' : ''}`}>
+			<span class="link-test"><slot></slot></span>
+		</a>
+	{/if}
 </li>
 
 <style lang="postcss">
