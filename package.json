@@ -1,7 +1,7 @@
 {
 	"name": "svelte-forge-ui",
 	"description": "It's a component library for Svelte. These component designs are lightweight and flexible.",
-	"version": "0.4.0-alpha",
+	"version": "0.4.0-alpha.2",
 	"private": false,
 	"keywords": [
 		"svelte",
@@ -74,6 +74,10 @@
 		"./toasts": {
 			"types": "./dist/components/toasts/index.d.ts",
 			"default": "./dist/components/toasts/index.js"
+		},
+		"./sidebars": {
+			"types": "./dist/components/sidebar/index.d.ts",
+			"default": "./dist/components/sidebar/index.js"
 		}
 	},
 	"homepage": "https://github.com/jorgeluis2000/svelte-forge-ui",
