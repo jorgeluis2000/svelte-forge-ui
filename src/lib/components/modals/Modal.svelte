@@ -10,6 +10,12 @@
 	export let theme: string = DEFAULT_THEME;
 	export let colorHex: string = DEFAULT_COLOR_HEX;
 	export let useCss: boolean = false;
+	export let fullScreen: boolean = false;
+	export let className: string = '';
+
+	const opacityTransition = 0.5;
+	const startTransition = 0;
+	const durationTransition = 500;
 
 	let listColors = transformListToObject(generateColorScale(colorHex), colorHex);
 	let scrollbarThumb = useCss ? `var(--${theme}-700)` : listColors['700'];
@@ -18,6 +24,7 @@
 	let colorText = useCss ? `var(--${theme}-500)` : listColors['500'];
 	let colorTextHover = useCss ? `var(--${theme}-600)` : listColors['600'];
 	let colorTextActive = useCss ? `var(--${theme}-400)` : listColors['400'];
+
 	function closeDialog() {
 		showModal = false;
 	}
@@ -39,11 +46,11 @@
 		<div class="content-bg scroll-standard" transition:fade={{ easing: quintInOut, duration: 300 }}>
 			<div class="center-modal">
 				<article
-					class="modal-dialog"
+					class={`modal-dialog ${fullScreen ? 'full-screen' : 'default'} ${className}`}
 					transition:scale={{
-						opacity: 0.5,
-						start: 0,
-						duration: 500,
+						opacity: opacityTransition,
+						start: startTransition,
+						duration: durationTransition,
 						easing: quintInOut
 					}}
 				>
@@ -65,7 +72,7 @@
 	.scroll-standard {
 		--scrollbar-thumb: var(--scrollbarThumb) !important;
 		--scrollbar-track: var(--scrollbarTrack) !important;
-		@apply scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full;
+		@apply scrollbar-none scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full;
 	}
 
 	.close-dialog {
@@ -82,7 +89,15 @@
 	}
 
 	.modal-dialog {
-		@apply relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-lg;
+		@apply w-full relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all;
+	}
+
+	.modal-dialog.default {
+		@apply sm:my-8 w-full sm:max-w-lg;
+	}
+
+	.modal-dialog.full-screen {
+		@apply w-full h-screen;
 	}
 
 	.center-modal {
