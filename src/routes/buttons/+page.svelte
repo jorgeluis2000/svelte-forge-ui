@@ -8,8 +8,8 @@
 	<h2 class="text-xl font-semibold">Buttons Section</h2>
 </div>
 <section class="grid grid-cols-2 gap-3 w-full bg-rose-200 px-5">
-	<ButtonAction rounded="md" textSize="sm" type="submit" sizeIcon="md">First Test Btn</ButtonAction>
-	<ButtonAction rounded="md" textSize="sm" type="submit" sizeIcon="md" isFilled thereIsIcon>
+	<ButtonAction type="submit" rounded="md" textSize="sm" sizeIcon="md">First Test Btn</ButtonAction>
+	<ButtonAction type="submit" rounded="md" textSize="sm" sizeIcon="md" isFilled thereIsIcon>
 		<SuccessIcon slot="icon" />
 		First Test Btn
 	</ButtonAction>

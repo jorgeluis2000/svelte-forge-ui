@@ -19,6 +19,7 @@
 		TabBottomContainerGroupSubItemNavigation,
 		ContainerReactiveSidebarNavigation
 	} from '$lib/components/sidebar';
+	import ItemActionSidebarNavigation from '$lib/components/sidebar/navigation/static-aside/ItemActionSidebarNavigation.svelte';
 
 	const companyInto = { name: 'Jorge Luis Güiza Granobles', address: [''], telephone: [''] };
 	let actionSidebar = false;
@@ -154,6 +155,15 @@
 			{/each}
 		</SidebarContainerBodyNavigation>
 		<SidebarContainerFooterNavigation slot="footer">
+			<ItemActionSidebarNavigation
+				nameItem="Logout"
+				colorHex="#ef4444"
+				isFilled
+				on:click={() => alert('Logout...')}
+				bind:openSidebar={actionSidebar}
+			>
+				<RobotColorIcon slot="icon" />
+			</ItemActionSidebarNavigation>
 			<CopyRightSidebarNavigation
 				company="Jorge Luis Güiza"
 				year="2024"
