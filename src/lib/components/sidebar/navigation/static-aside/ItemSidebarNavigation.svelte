@@ -69,7 +69,7 @@
 
 <style lang="postcss">
 	.item {
-		@apply w-full;
+		@apply w-full list-none;
 	}
 	.item .link,
 	.item .link .icon {
