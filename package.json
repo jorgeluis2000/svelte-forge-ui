@@ -1,7 +1,7 @@
 {
 	"name": "svelte-forge-ui",
 	"description": "It's a component library for Svelte. These component designs are lightweight and flexible.",
-	"version": "0.5.0-alpha.1",
+	"version": "0.5.0-alpha.2",
 	"private": false,
 	"keywords": [
 		"svelte",
