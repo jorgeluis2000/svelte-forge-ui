@@ -37,24 +37,22 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<section class="container">
-	<button
-		use:setTypeActionButton={type}
-		use:cssVariables={{
-			color: colorUseCss,
-			textColor: colorText
-		}}
-		class={`btn ${thereIsIcon ? 'responsive' : ''} ${isFilled ? 'filled' : ''} ${styleRoundedStyle} ${styleTextSize} ${className}`}
-		on:click={(event) => dispatch('click', event)}
-	>
-		<div class={`${thereIsIcon ? 'btn-icon' : 'hidden'} ${styleSizeIcon}`}>
-			<slot name="icon" />
-		</div>
-		<div class="text">
-			<slot />
-		</div>
-	</button>
-</section>
+<button
+	use:setTypeActionButton={type}
+	use:cssVariables={{
+		color: colorUseCss,
+		textColor: colorText
+	}}
+	class={`btn container ${thereIsIcon ? 'responsive' : ''} ${isFilled ? 'filled' : ''} ${styleRoundedStyle} ${styleTextSize} ${className}`}
+	on:click={(event) => dispatch('click', event)}
+>
+	<div class={`${thereIsIcon ? 'btn-icon' : 'hidden'} ${styleSizeIcon}`}>
+		<slot name="icon" />
+	</div>
+	<div class="text">
+		<slot />
+	</div>
+</button>
 
 <style lang="postcss">
 	.btn {
