@@ -22,7 +22,7 @@
 	export let sizeIcon: GeneralSize = 'base';
 	const styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
 
-	let styleAlarm = getCustomStyle(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
+	let styleAlarm = getCustomStyle<TypeToast>(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
 	let listColors = transformListToObject(generateColorScale(styleAlarm), styleAlarm);
 	let colorIconText = listColors['500'];
 	let colorIconBg = listColors['100'];
