@@ -21,5 +21,5 @@ export const DEFAULT_COLOR_TIME: string = '#f97316';
 
 export const DEFAULT_ALARM: StyleClass<TypeToast> = {
 	type: 'info',
-	class: DEFAULT_COLOR_HEX
+	class: ''
 };
