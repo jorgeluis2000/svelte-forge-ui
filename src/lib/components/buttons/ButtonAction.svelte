@@ -16,6 +16,7 @@
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
 	import type { GeneralSize, RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
 	import type { TypeButton } from '$lib/domains/types/TypeButton.type';
+	import '$lib/css/sizes.css';
 
 	export let theme: string = DEFAULT_THEME;
 	export let isFilled: boolean = false;
@@ -28,10 +29,11 @@
 	export let useCss: boolean = false;
 	export let type: TypeButton = 'button';
 
+	const sizeStyle = SIZE_STYLE;
 	const listColors = transformListToObject(generateColorScale(colorHex), colorHex);
 	const colorUseCss: string = useCss ? `var(--${theme}-500)` : listColors['500'];
 	const colorText = isFilled ? 'white' : colorUseCss;
-	const styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
+	const styleSizeIcon = getCustomStyle(sizeStyle, sizeIcon, DEFAULT_SIZE).class;
 	const styleRoundedStyle = getCustomStyle(ROUNDED_STYLE, rounded, DEFAULT_ROUNDED_SIZE).class;
 	const styleTextSize = getCustomStyle(TEXT_SIZE_STYLE, textSize, DEFAULT_TEXT_SIZE).class;
 	const dispatch = createEventDispatcher();
@@ -63,21 +65,17 @@
 		border-color: var(--color);
 		@apply flex px-4 py-2 border-2 h-auto justify-center items-center w-full space-x-1.5 bg-white shadow-sm hover:shadow-lg hover:scale-105 active:scale-95;
 	}
-
 	.btn-icon {
 		@apply block;
 	}
-
 	.btn.filled {
 		background-color: var(--color);
 	}
-
 	@container container (max-width: 18rem) {
 		.btn.responsive > .text {
 			@apply hidden;
 		}
 	}
-
 	.container {
 		container-type: inline-size;
 		container-name: container;

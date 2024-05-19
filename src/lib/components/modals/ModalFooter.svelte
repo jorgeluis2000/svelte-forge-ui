@@ -6,6 +6,7 @@
 		DEFAULT_COLOR_SUCCESS
 	} from '$lib/constants/DefaultStyles.constants';
 	import type { RoundedSize, TextSize } from '$lib/domains/types/Sizes.type';
+	import '$lib/css/sizes.css';
 
 	export let showModal: boolean;
 	export let rounded: RoundedSize = 'none';

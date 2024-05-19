@@ -15,6 +15,7 @@
 		DEFAULT_THEME
 	} from '$lib/constants/DefaultStyles.constants';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import '$lib/css/sizes.css';
 
 	export let listItemsShow: ItemSelect[];
 	export let nameInput: string = '';

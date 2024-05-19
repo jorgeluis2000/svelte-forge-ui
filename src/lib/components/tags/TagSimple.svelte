@@ -9,6 +9,7 @@
 		DEFAULT_THEME
 	} from '$lib/constants/DefaultStyles.constants';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import '$lib/css/sizes.css';
 
 	export let valueText: string = '';
 	export let rounded: RoundedSize = 'full';

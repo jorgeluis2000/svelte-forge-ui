@@ -8,6 +8,7 @@
 	import { ROUNDED_STYLE, TEXT_SIZE_STYLE } from '$lib/constants/Styles.constants';
 	import { DEFAULT_ROUNDED_SIZE, DEFAULT_TEXT_SIZE } from '$lib/constants/DefaultStyles.constants';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import '$lib/css/sizes.css';
 
 	export let maxlength: number | null | undefined = null;
 	export let autocomplete: AutoCompleteInput = 'off';
