@@ -4,7 +4,10 @@
 	import DecisionModal from '$lib/components/modals/DecisionModal.svelte';
 	import ModalHeader from '$lib/components/modals/ModalHeader.svelte';
 	import ModalFooter from '$lib/components/modals/ModalFooter.svelte';
+	import InputSelectFloat from '$lib/components/inputs/floats/InputSelectFloat.svelte';
+	import type { ItemSelect } from '$lib';
 
+	const colorPrimary = '#2980B9';
 	let showModalMain = false;
 	let showModalDecisionInfo = false;
 	let showModalDecisionError = false;
@@ -12,7 +15,13 @@
 	let showModalDecisionSuccess = false;
 	let showModalDecisionLoading = false;
 	let showModalDecisionTime = false;
-	let colorPrimary = '#2980B9';
+	let inputSelectFloat: ItemSelect[] = [];
+	const listItemsToShowSelect: ItemSelect[] = [
+		{ name: 'algo', text: 'Test Select Float', value: '1' },
+		{ name: 'algo2', text: 'Test 2 Select Float', value: '2' },
+		{ name: 'algo3', text: 'Test 3 Select Float', value: '3' },
+		{ name: 'algo4', text: 'Test 4 Select Float', value: '4' }
+	];
 </script>
 
 <div class="flex w-full" id="textareas">
@@ -28,12 +37,26 @@
 	}}>Open Modal Main!</ButtonAction
 >
 
-<Modal colorHex="#179f8b" fullScreen bind:showModal={showModalMain}>
+<Modal colorHex="#179f8b" bind:showModal={showModalMain}>
 	<ModalHeader slot="header">
 		Ejemplo: <span class="font-bold text-primary-500">Modal</span>
 	</ModalHeader>
 	<section>Hello world</section>
-	<ButtonAction colorHex={colorPrimary} sizeIcon="lg" theme="error">Hello world</ButtonAction>
+
+	<InputSelectFloat
+		className=""
+		nameInput="input-select-float"
+		labelText="Input Select Float"
+		listItemsShow={listItemsToShowSelect}
+		defaultText=" - "
+		textManySelected="Selects"
+		placeholderSearch="Search"
+		rounded="none"
+		roundedTags="full"
+		textSize="base"
+		textSizeTags="base"
+		bind:valueInput={inputSelectFloat}
+	></InputSelectFloat>
 	<ModalFooter
 		className="mt-5"
 		textCancel="Cancel"
