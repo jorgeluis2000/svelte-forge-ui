@@ -15,6 +15,7 @@
 	} from '$lib/functions/Styles.functions';
 	import { ROUNDED_STYLE, SIZE_STYLE } from '$lib/constants/Styles.constants';
 	import { generateColorScale, transformListToObject } from '$lib/functions/Colors.functions';
+	import '$lib/css/sizes.css';
 
 	export let isFilled: boolean = false;
 	export let className: string = '';

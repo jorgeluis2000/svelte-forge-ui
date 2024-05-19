@@ -14,6 +14,7 @@
 	import { DEFAULT_ALARM, DEFAULT_SIZE } from '$lib/constants/DefaultStyles.constants';
 	import type { TypeToast } from '$lib/domains/interfaces/Toast.interface';
 	import type { GeneralSize } from '$lib/domains/types/Sizes.type';
+	import '$lib/css/sizes.css';
 
 	const dispatch = createEventDispatcher();
 

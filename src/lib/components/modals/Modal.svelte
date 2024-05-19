@@ -89,7 +89,7 @@
 	}
 
 	.modal-dialog {
-		@apply w-full relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all;
+		@apply w-full relative transform overflow-x-hidden rounded-lg bg-white text-left shadow-xl transition-all;
 	}
 
 	.modal-dialog.default {
