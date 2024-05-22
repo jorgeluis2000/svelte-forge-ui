@@ -2,13 +2,18 @@
 	import Toast from './Toast.svelte';
 	import { dismissToast, toasts } from '$lib/stores/ToastStore';
 	import type { GeneralSize } from '$lib/domains/types/Sizes.type';
+	import type { IToast } from '$lib/domains/interfaces/Toast.interface';
 
 	export let sizeIcon: GeneralSize = 'base';
+	let toastsContainer: IToast[];
+	toasts.subscribe((value) => {
+		toastsContainer = value;
+	});
 </script>
 
-{#if $toasts}
+{#if toastsContainer}
 	<section class="position-container-right-top">
-		{#each $toasts as toast (toast.id)}
+		{#each toastsContainer as toast (toast.id)}
 			<Toast
 				type={toast.type ?? 'error'}
 				dismissible={toast.dismissible}
@@ -16,7 +21,7 @@
 				on:dismiss={() => dismissToast(toast.id ?? '')}
 			>
 				<svelte:component this={toast.component} slot="icon"></svelte:component>
-				{@html toast.message ?? ''}
+				{@html toast.message}
 			</Toast>
 		{/each}
 	</section>
