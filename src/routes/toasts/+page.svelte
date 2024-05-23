@@ -29,11 +29,13 @@
 	function eventNewToastLoading() {
 		const myId = generateID();
 		addLoadingToast({ id: myId, message: 'Loading data...' });
-		updateToast({
-			id: myId,
-			message: 'New Message now',
-			type: 'error'
-		});
+		setInterval(() => {
+			updateToast({
+				id: myId,
+				message: 'New Message now',
+				type: 'error'
+			});
+		}, 1000);
 	}
 
 	function eventNewToastCustom() {
