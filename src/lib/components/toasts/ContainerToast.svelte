@@ -2,10 +2,8 @@
 	import Toast from './Toast.svelte';
 	import { dismissToast, toasts } from '$lib/stores/ToastStore';
 	import type { GeneralSize } from '$lib/domains/types/Sizes.type';
-	import type { IToast } from '$lib/domains/interfaces/Toast.interface';
 
 	export let sizeIcon: GeneralSize = 'base';
-	let toastsContainer: IToast[];
 </script>
 
 {#if $toasts}

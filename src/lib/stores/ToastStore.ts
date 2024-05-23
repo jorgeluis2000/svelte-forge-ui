@@ -20,7 +20,6 @@ export const addLoadingToast = (toast: IToastLoading) => {
 	};
 	const newToast = defaults as IToast;
 	toasts.update((all) => [{ ...newToast }, ...all]);
-	// // if (defaults.timeout) setTimeout(() => dismissToast(defaults.id), defaults.timeout);
 };
 
 export const updateToast = (toast: IToastUpdated) => {
@@ -30,6 +29,7 @@ export const updateToast = (toast: IToastUpdated) => {
 		dismissible: toast.dismissible ?? true,
 		timeout: toast.timeout ?? 4000,
 		message: toast.message,
+		component: toast.component
 	};
 	// dismissToast(toast.id);
 	toasts.update((all) =>
