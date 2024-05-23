@@ -6,14 +6,11 @@
 
 	export let sizeIcon: GeneralSize = 'base';
 	let toastsContainer: IToast[];
-	toasts.subscribe((value) => {
-		toastsContainer = value;
-	});
 </script>
 
-{#if toastsContainer}
+{#if $toasts}
 	<section class="position-container-right-top">
-		{#each toastsContainer as toast (toast.id)}
+		{#each $toasts as toast (toast.id)}
 			<Toast
 				type={toast.type ?? 'error'}
 				dismissible={toast.dismissible}

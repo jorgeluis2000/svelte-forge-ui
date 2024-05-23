@@ -25,7 +25,7 @@
 	let listColors = transformListToObject(generateColorScale(styleAlarm), styleAlarm);
 	let colorIconText = listColors['500'];
 	let colorIconBg = listColors['100'];
-	$: () => {
+	$: {
 		styleAlarm = getCustomStyle<TypeToast>(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
 		listColors = transformListToObject(generateColorScale(styleAlarm), styleAlarm);
 		colorIconText = listColors['500'];
