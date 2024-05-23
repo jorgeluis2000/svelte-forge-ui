@@ -7,6 +7,7 @@ import {
 	DEFAULT_COLOR_INFO,
 	DEFAULT_COLOR_LOADING,
 	DEFAULT_COLOR_SUCCESS,
+	DEFAULT_COLOR_TIME,
 	DEFAULT_COLOR_WARNING
 } from './DefaultStyles.constants';
 import type { TypeToast } from '$lib/domains/interfaces/Toast.interface';
@@ -56,7 +57,7 @@ export const COLOR_ALARM_STYLE: StyleClass<TypeToast>[] = [
 	{ type: 'warning', class: DEFAULT_COLOR_WARNING },
 	{ type: 'info', class: DEFAULT_COLOR_INFO },
 	{ type: 'loading', class: DEFAULT_COLOR_LOADING },
-	// { type: 'time', class: DEFAULT_COLOR_TIME }
+	{ type: 'time', class: DEFAULT_COLOR_TIME }
 ];
 
 export const COLOR_TEXT_ALARM_STYLE: StyleClass<TypeAlarm>[] = [

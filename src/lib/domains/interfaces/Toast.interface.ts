@@ -33,4 +33,4 @@ export interface IToastDefault {
 	component?: ComponentType;
 }
 
-export type TypeToast = 'info' | 'error' | 'warning' | 'success' | 'loading' | 'custom';
+export type TypeToast = 'info' | 'error' | 'warning' | 'success' | 'loading' | 'time' | 'custom';

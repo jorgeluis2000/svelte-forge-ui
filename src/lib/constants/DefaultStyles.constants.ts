@@ -15,7 +15,7 @@ export const DEFAULT_COLOR_ERROR: string = '#ef4444';
 export const DEFAULT_COLOR_INFO: string = '#0ea5e9';
 export const DEFAULT_COLOR_WARNING: string = '#f59e0b';
 export const DEFAULT_COLOR_SUCCESS: string = '#10b981';
-export const DEFAULT_COLOR_LOADING: string = '#64748b';
+export const DEFAULT_COLOR_LOADING: string = '#eab308';
 export const DEFAULT_COLOR_TIME: string = '#f97316';
 
 

@@ -14,23 +14,25 @@
 	import { DEFAULT_ALARM, DEFAULT_SIZE } from '$lib/constants/DefaultStyles.constants';
 	import type { TypeToast } from '$lib/domains/interfaces/Toast.interface';
 	import type { GeneralSize } from '$lib/domains/types/Sizes.type';
+	import TimeSandIcon from '$lib/icons/TimeSandIcon.svelte';
 
 	const dispatch = createEventDispatcher();
 
 	export let type: TypeToast = 'custom';
 	export let dismissible: boolean = true;
 	export let sizeIcon: GeneralSize = 'base';
-	const styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
+	let styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
 	let styleAlarm = getCustomStyle<TypeToast>(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
 	let listColors = transformListToObject(generateColorScale(styleAlarm), styleAlarm);
-	let colorIconText = listColors['500'];
+	let colorIconText = listColors['600'];
 	let colorIconBg = listColors['100'];
 	$: {
+		styleSizeIcon = getCustomStyle(SIZE_STYLE, sizeIcon, DEFAULT_SIZE).class;
 		styleAlarm = getCustomStyle<TypeToast>(COLOR_ALARM_STYLE, type, DEFAULT_ALARM).class;
 		listColors = transformListToObject(generateColorScale(styleAlarm), styleAlarm);
-		colorIconText = listColors['500'];
+		colorIconText = listColors['600'];
 		colorIconBg = listColors['100'];
-	};
+	}
 </script>
 
 <button
@@ -56,8 +58,10 @@
 			<WarningIcon className={styleSizeIcon} />
 		{:else if type === 'info'}
 			<InfoIcon className={styleSizeIcon} />
+		{:else if type === 'time'}
+			<TimeSandIcon className={styleSizeIcon} />
 		{:else}
-			<slot name="icon"></slot>
+			<slot name="icon" class={styleSizeIcon}></slot>
 		{/if}
 	</div>
 
