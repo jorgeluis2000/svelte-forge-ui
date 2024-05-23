@@ -8,7 +8,7 @@ import type {
 	TypeToast
 } from '$lib/domains/interfaces/Toast.interface';
 
-export const toasts = writable([] as IToast[]);
+export const toasts = writable<IToast[]>([]);
 
 export const addLoadingToast = (toast: IToastLoading) => {
 	const defaults: IToastDefault = {
@@ -20,19 +20,21 @@ export const addLoadingToast = (toast: IToastLoading) => {
 	};
 	const newToast = defaults as IToast;
 	toasts.update((all) => [{ ...newToast }, ...all]);
-	if (defaults.timeout) setTimeout(() => dismissToast(defaults.id), defaults.timeout);
+	// // if (defaults.timeout) setTimeout(() => dismissToast(defaults.id), defaults.timeout);
 };
 
 export const updateToast = (toast: IToastUpdated) => {
 	const newToast: IToast = {
 		id: toast.id,
-		message: toast.message,
+		type: toast.type,
 		dismissible: toast.dismissible ?? true,
 		timeout: toast.timeout ?? 4000,
-		type: toast.type
+		message: toast.message,
 	};
-	dismissToast(toast.id);
-	toasts.update((all) => [{ ...newToast }, ...all]);
+	// dismissToast(toast.id);
+	toasts.update((all) =>
+		all.map(intoToast => intoToast.id === toast.id ? newToast : intoToast)
+	);
 	setTimeout(() => dismissToast(toast.id), newToast.timeout);
 };
 
@@ -45,9 +47,10 @@ export const addToast = (toast: IToast) => {
 		dismissible: true,
 		timeout: 4000
 	};
-	toasts.update((all) => [{ ...defaults, ...toast }, ...all]);
+	const newToast = { ...defaults, ...toast } as IToast
+	toasts.update((all) => [newToast].concat(all));
 
-	if (toast.timeout) setTimeout(() => dismissToast(defaults.id), toast.timeout);
+	setTimeout(() => dismissToast(defaults.id), newToast.timeout);
 };
 
 export const generateID = () => {
@@ -55,7 +58,8 @@ export const generateID = () => {
 };
 
 export const dismissToast = (id: string) => {
-	toasts.update((all) => all.filter((t) => t.id !== id));
+
+	toasts.update((all) => all.filter((toast) => toast.id !== id));
 };
 
 export function getTypeToast(httpCode: number) {
